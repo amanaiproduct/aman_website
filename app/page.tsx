@@ -69,7 +69,7 @@ export default function HomePage() {
               </li>
               <li>
                 <a 
-                  href="https://twitter.com/_amankhan" 
+                  href="https://twitter.com/amankhan" 
                   className="hover:underline inline-flex items-center"
                   target="_blank"
                   rel="noopener noreferrer"
