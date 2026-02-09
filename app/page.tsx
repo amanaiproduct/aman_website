@@ -10,14 +10,24 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="bg-blue-500 dark:bg-blue-600 text-white p-4 text-center">
-        <a 
-          href="https://maven.com/aman-khan/thriving-as-an-ai-pm"
+      <div className="bg-blue-500 dark:bg-blue-600 text-white p-4 text-center flex items-center justify-center gap-4 flex-wrap">
+        <a
+          href="https://maven.com/aman-khan/build-ai-product-sense"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:underline inline-flex items-center justify-center gap-2 text-lg font-medium"
         >
-          Check out my course &quot;Prototype to Production: The AI PM Playbook&quot;
+          Check out my course &quot;Build AI Product Sense&quot;
+          <span className="text-blue-100">→</span>
+        </a>
+        <span className="text-blue-200">|</span>
+        <a
+          href="https://buildaiproductsense.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline inline-flex items-center justify-center gap-2 text-lg font-medium"
+        >
+          Book a Workshop
           <span className="text-blue-100">→</span>
         </a>
       </div>
