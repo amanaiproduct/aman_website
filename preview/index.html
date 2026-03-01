@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMAN KHAN</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #e8e6e1;
+  --ink: #1a1a1a;
+  --muted: #555;
+  --border: #ccc;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--cream);
+  color: var(--ink);
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+}
+
+a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+a:hover { border-bottom-color: transparent; }
+
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* HERO */
+#hero {
+  position: relative;
+  height: 70vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#dither-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  line-height: 1;
+  background: var(--cream);
+  padding: 16px 32px;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero-tagline {
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  letter-spacing: 0.15em;
+  margin-top: 16px;
+  color: var(--muted);
+  text-transform: none;
+  pointer-events: none;
+}
+
+.hero-cta-row {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--cream) !important;
+  padding: 12px 32px;
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: none !important;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-btn:hover { opacity: 0.85; border-bottom: none !important; }
+
+.below-hero-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.below-hero-links a { color: var(--muted); border-bottom: 1px solid transparent; }
+.below-hero-links a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 8px 0 24px;
+}
+
+.about-bio {
+  text-transform: none;
+  font-size: 14px;
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* SECTIONS */
+section {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.section-label::before { content: '// '; }
+
+/* OPEN SOURCE */
+.oss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.oss-card {
+  border: 1px solid var(--border);
+  padding: 24px;
+}
+
+.oss-card h3 { font-size: 14px; margin-bottom: 8px; }
+.oss-stars { font-size: 12px; color: var(--muted); letter-spacing: 0.2em; }
+
+/* BOOK */
+.book-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.book-cover { width: 100%; border: 1px solid var(--border); }
+
+.book-info h3 { font-size: 18px; letter-spacing: 0.1em; margin-bottom: 8px; }
+.book-publisher { font-size: 12px; color: var(--muted); letter-spacing: 0.2em; margin-bottom: 10px; }
+.book-desc { text-transform: none; line-height: 1.8; max-width: 500px; }
+
+/* FEATURED */
+.featured-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.featured-item:first-of-type { border-top: 1px solid var(--border); }
+.featured-source { font-size: 12px; color: var(--muted); letter-spacing: 0.3em; }
+.featured-title { font-size: 15px; font-weight: 700; letter-spacing: 0.05em; }
+
+/* COURSES */
+.course-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.course-row:first-of-type { border-top: 1px solid var(--border); }
+.course-name { font-weight: 700; font-size: 13px; }
+.course-collab { font-size: 12px; color: var(--muted); }
+.course-rating { font-size: 13px; letter-spacing: 0.1em; white-space: nowrap; }
+
+/* TALK CARDS */
+.talks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.talk-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.talk-card:first-child { border-top: 1px solid var(--border); }
+
+.talk-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.talk-avatar-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: linear-gradient(135deg, #e67e22, #e74c3c);
+}
+
+.talk-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.talk-card-show {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.talk-card-desc {
+  font-size: 12px;
+  text-transform: none;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.talk-card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+
+.talk-card-links a {
+  color: var(--ink);
+  border-bottom: none;
+}
+
+.talk-card-links a:hover {
+  border-bottom: 1px solid var(--ink);
+}
+
+/* WRITING */
+.writing-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+
+.writing-item:first-of-type { border-top: 1px solid var(--border); }
+.writing-date { font-size: 12px; color: var(--muted); }
+.writing-title a { font-weight: 500; }
+
+.see-more {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+}
+
+/* CONTACT */
+.contact-links {
+  display: flex;
+  gap: 32px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+
+/* FOOTER */
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.3em;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+nav.visible { opacity: 1; }
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a { border-bottom: none; }
+nav a:hover { opacity: 0.5; }
+.nav-links { display: flex; gap: 24px; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .about-row { gap: 20px; }
+  .about-bio { font-size: 13px; }
+  .book-grid { grid-template-columns: 140px 1fr; gap: 24px; }
+  .oss-grid { grid-template-columns: 1fr; }
+  .featured-item { grid-template-columns: 1fr; }
+  .course-row { grid-template-columns: 1fr auto; }
+  .course-collab { display: none; }
+  .nav-links { gap: 12px; }
+  .contact-links { flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="#hero">AMAN KHAN</a>
+    <div class="nav-links">
+      <a href="#book">BOOK</a>
+      <a href="#courses">COURSES</a>
+      <a href="#talks">TALKS</a>
+      <a href="#writing">WRITING</a>
+    </div>
+  </div>
+</nav>
+
+<div id="hero">
+  <canvas id="dither-canvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-name">AMAN KHAN</div>
+    <div class="hero-tagline">Practical resources and ideas for AI product builders.</div>
+    <div class="hero-cta-row">
+      <a href="https://aiproductplaybook.com" class="cta-btn">SUBSCRIBE</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="below-hero-links">
+    <a href="https://www.linkedin.com/in/amanberkeley">LINKEDIN</a>
+    <a href="https://x.com/amankhan">X</a>
+    <a href="https://github.com/amanaiproduct">GITHUB</a>
+    <a href="https://amankhan1.substack.com">SUBSTACK</a>
+  </div>
+  <div class="about-row">
+    <p class="about-bio">I'm Head of Product at <a href="https://arize.com">Arize AI</a>, where I help teams build and evaluate AI products. Previously built products at Spotify, Cruise, Zipline, and Apple. I teach courses on AI product management and write about what I learn.</p>
+  </div>
+</div>
+
+<div class="container">
+
+<section id="opensource">
+  <div class="section-label">OPEN SOURCE</div>
+  <div class="oss-grid">
+    <div class="oss-card">
+      <h3><a href="https://github.com/amanaiproduct/personal-os">PERSONAL-OS</a></h3>
+      <div class="oss-stars">&#9733; 367 STARS</div>
+      <p style="margin-top:8px;text-transform:none;font-size:12px;color:var(--muted);">A framework for building your own AI-powered personal operating system.</p>
+    </div>
+    <div class="oss-card">
+      <h3><a href="https://github.com/amanaiproduct/openclaw-setup">OPENCLAW-SETUP</a></h3>
+      <div class="oss-stars">&#9733; 38 STARS</div>
+      <p style="margin-top:8px;text-transform:none;font-size:12px;color:var(--muted);">Quick setup guide for deploying OpenClaw agents.</p>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="section-label">BOOK</div>
+  <div class="book-grid">
+    <a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/"><img src="https://raw.githubusercontent.com/amanaiproduct/amanaiproduct/main/ai-product-management-book.jpg" alt="AI Product Management Book" class="book-cover" /></a>
+    <div class="book-info">
+      <h3><a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/">AI PRODUCT MANAGEMENT</a></h3>
+      <div class="book-publisher">O'REILLY MEDIA &middot; EARLY RELEASE</div>
+      <div class="book-desc">
+        A comprehensive guide to building and managing AI products, from evaluation frameworks to production deployment. Written for product managers navigating the complexities of non-deterministic systems.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="featured">
+  <div class="section-label">FEATURED IN</div>
+  <div class="featured-item">
+    <div>
+      <div class="featured-source">LENNY'S NEWSLETTER</div>
+      <div class="featured-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">BEYOND VIBE CHECKS: A PM'S COMPLETE GUIDE TO EVALS</a></div>
+    </div>
+    <div class="featured-source">APR 2025</div>
+  </div>
+  <div class="featured-item">
+    <div>
+      <div class="featured-source">LENNY'S NEWSLETTER</div>
+      <div class="featured-title"><a href="https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense">HOW TO BUILD AI PRODUCT SENSE</a></div>
+    </div>
+    <div class="featured-source">2025</div>
+  </div>
+  <div class="featured-item">
+    <div>
+      <div class="featured-source">LENNY'S PODCAST</div>
+      <div class="featured-title"><a href="https://www.youtube.com/watch?v=E_rNotqs--I">BECOMING AN AI PM</a></div>
+    </div>
+    <div class="featured-source">NOV 2024</div>
+  </div>
+</section>
+
+<section id="courses">
+  <div class="section-label">COURSES</div>
+  <div class="course-row">
+    <div class="course-name"><a href="https://maven.com/aman-khan/claude-code-for-product-managers">CLAUDE CODE FOR PMS</a></div>
+    <div class="course-collab">W/ ERIC XIAO</div>
+    <div class="course-rating">&#9733; 5.0</div>
+  </div>
+  <div class="course-row">
+    <div class="course-name"><a href="https://maven.com/aman-khan/build-ai-product-sense">BUILD AI PRODUCT SENSE</a></div>
+    <div class="course-collab">W/ TAL RAVIV</div>
+    <div class="course-rating">&#9733; 4.8</div>
+  </div>
+  <div class="course-row">
+    <div class="course-name"><a href="https://maven.com/aman-khan/thriving-as-an-ai-pm">AI PM PLAYBOOK</a></div>
+    <div class="course-collab">MAVEN</div>
+    <div class="course-rating">&#9733; 4.8</div>
+  </div>
+  <div class="course-row">
+    <div class="course-name"><a href="https://learn.deeplearning.ai/courses/evaluating-ai-agents/">EVALUATING AI AGENTS</a></div>
+    <div class="course-collab">W/ ANDREW NG + JOHN GILHULY</div>
+    <div class="course-rating">DEEPLEARNING.AI</div>
+  </div>
+</section>
+
+<section id="talks">
+  <div class="section-label">TALKS + PODCASTS</div>
+  <div class="talks-list">
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F441213db-4824-4e48-9d28-a3a18952cbfc_592x592.png" alt="Lenny's Newsletter" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">LENNY'S NEWSLETTER</div>
+        <div class="talk-card-desc">Deep dive on building AI products, evaluations, and the future of PM</div>
+        <div class="talk-card-links">
+          <a href="https://www.youtube.com/watch?v=E_rNotqs--I">&rarr; YouTube Interview</a>
+          <a href="https://www.lennysnewsletter.com/p/beyond-vibe-checks-a-pms-complete">&rarr; Beyond Vibe Checks: A PM's Complete Guide</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2dbd75e-1c5a-48ab-94ef-b24caea63cdf_1024x1024.png" alt="Peter Yang" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">PETER YANG</div>
+        <div class="talk-card-desc">Product management strategies, AI evaluations, and the AI stack</div>
+        <div class="talk-card-links">
+          <a href="https://www.youtube.com/watch?v=VXdrfvqiH-0">&rarr; The AI Stack We Actually Use (2026)</a>
+          <a href="https://www.youtube.com/watch?v=TL527yTpxlk">&rarr; Beginner's Course on AI Evaluations</a>
+          <a href="https://www.youtube.com/watch?v=u8lEDw7pOkE">&rarr; The AI Skill That Will Define Your PM Career</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://img.youtube.com/vi/2HNSG990Ew8/default.jpg" alt="AI Engineer World's Fair" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">AI ENGINEER WORLD'S FAIR</div>
+        <div class="talk-card-desc">Shipping AI that works: an evaluation framework for PMs</div>
+        <div class="talk-card-links">
+          <a href="https://www.youtube.com/watch?v=2HNSG990Ew8">&rarr; Watch Talk</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://yt3.googleusercontent.com/91zElxE2d20UXhsFWobw-z-L6oVIaZs88jK5ojx1LAk6V_9s4IIaCA9VqqN_Jw3WkgW_VEpN=s160-c-k-c0x00ffffff-no-rj" alt="Hamel Husain" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">HAMEL HUSAIN</div>
+        <div class="talk-card-desc">Building evaluation systems for AI applications</div>
+        <div class="talk-card-links">
+          <a href="https://www.youtube.com/watch?v=XueTa4qrMpg">&rarr; Evals Course Interview</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://www.deeplearning.ai/favicon.ico" alt="DeepLearning.AI" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">DEEPLEARNING.AI</div>
+        <div class="talk-card-desc">Teaching AI agent evaluation techniques to developers</div>
+        <div class="talk-card-links">
+          <a href="https://www.deeplearning.ai/short-courses/evaluating-ai-agents/">&rarr; Evaluating AI Agents Course</a>
+          <a href="https://www.youtube.com/watch?v=GzxdGpFhn04">&rarr; Course Launch Interview</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F266f66c3-ca9f-4c0b-93a7-b1dc6ed89901_512x512.png" alt="Aakash Gupta" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">AAKASH GUPTA</div>
+        <div class="talk-card-desc">Product growth strategies and scaling AI products</div>
+        <div class="talk-card-links">
+          <a href="https://www.news.aakashg.com/p/aman-khan-podcast">&rarr; Product Growth Podcast</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <div class="talk-avatar-placeholder">MP</div>
+      <div class="talk-card-body">
+        <div class="talk-card-show">MIND THE PRODUCT</div>
+        <div class="talk-card-desc">Frameworks for thriving as an AI product manager</div>
+        <div class="talk-card-links">
+          <a href="https://www.mindtheproduct.com/how-to-thrive-as-an-ai-product-manager-aman-khan-director-of-product-arize-ai/">&rarr; How to Thrive as an AI Product Manager</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://img.youtube.com/vi/NXTnmfG4h7U/default.jpg" alt="ProductCon AI" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">PRODUCTCON AI</div>
+        <div class="talk-card-desc">How PMs can get the most out of Cursor</div>
+        <div class="talk-card-links">
+          <a href="https://www.youtube.com/watch?v=NXTnmfG4h7U">&rarr; Watch Talk</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="talk-card">
+      <img class="talk-avatar" src="https://img.youtube.com/vi/ACrOVlbk190/default.jpg" alt="Supra Insider" />
+      <div class="talk-card-body">
+        <div class="talk-card-show">SUPRA INSIDER</div>
+        <div class="talk-card-desc">How PMs can bring predictability to AI</div>
+        <div class="talk-card-links">
+          <a href="https://www.youtube.com/watch?v=ACrOVlbk190">&rarr; Watch Talk</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <a href="all-talks.html" class="see-more">SEE ALL TALKS &rarr;</a>
+</section>
+
+<section id="writing">
+  <div class="section-label">WRITING</div>
+  <div class="writing-item"><div class="writing-date">FEB 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/how-to-make-your-openclaw-agent-useful">HOW TO MAKE YOUR OPENCLAW AGENT USEFUL AND SECURE</a></div></div>
+  <div class="writing-item"><div class="writing-date">FEB 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/how-carl-set-up-his-personal-os-in">HOW CARL SET UP HIS PERSONAL OS IN CLAUDE CODE</a></div></div>
+  <div class="writing-item"><div class="writing-date">JAN 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/how-to-get-clawdbotmoltbotopenclaw">HOW TO GET CLAWDBOT SET UP IN AN AFTERNOON</a></div></div>
+  <div class="writing-item"><div class="writing-date">JAN 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/cursor-for-product-managers">CURSOR FOR PRODUCT MANAGERS</a></div></div>
+  <div class="writing-item"><div class="writing-date">NOV 2025</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/building-ai-product-sense-with-a">BUILDING AI PRODUCT SENSE WITH A PERSONAL OS</a></div></div>
+  <div class="writing-item"><div class="writing-date">AUG 2025</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/beginners-guide-to-ai-evals-walkthrough">BEGINNER'S GUIDE TO AI EVALS (WALKTHROUGH)</a></div></div>
+  <div class="writing-item"><div class="writing-date">JUL 2025</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/how-ai-prototyping-tools-actually">HOW AI PROTOTYPING TOOLS ACTUALLY WORK</a></div></div>
+  <div class="writing-item"><div class="writing-date">JUN 2025</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/how-ai-pms-and-ai-engineers-collaborate">HOW AI PMS AND AI ENGINEERS COLLABORATE ON EVALS</a></div></div>
+  <div class="writing-item"><div class="writing-date">JUN 2025</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/the-five-skills-i-actually-use-every">THE FIVE SKILLS I ACTUALLY USE EVERY DAY AS AN AI PM</a></div></div>
+  <div class="writing-item"><div class="writing-date">APR 2025</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">BEYOND VIBE CHECKS: A PM'S COMPLETE GUIDE TO EVALS</a></div></div>
+  <a href="https://amankhan1.substack.com" class="see-more">SEE ALL WRITING &rarr;</a>
+</section>
+
+<section id="contact">
+  <div class="section-label">CONTACT</div>
+  <div class="contact-links">
+    <a href="https://linkedin.com/in/amanberkeley">LINKEDIN</a>
+    <a href="https://x.com/amankhan">X / TWITTER</a>
+    <a href="https://amankhan1.substack.com">SUBSTACK</a>
+    <a href="https://github.com/amanaiproduct">GITHUB</a>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">&copy; 2026 AMAN KHAN</div>
+</footer>
+
+<script>
+// NAV VISIBILITY
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.8);
+});
+
+// WEBGL DITHERING SHADER
+const canvas = document.getElementById('dither-canvas');
+const gl = canvas.getContext('webgl');
+
+function resize() {
+  const dpr = Math.min(window.devicePixelRatio, 2);
+  canvas.width = canvas.clientWidth * dpr;
+  canvas.height = canvas.clientHeight * dpr;
+  gl.viewport(0, 0, canvas.width, canvas.height);
+}
+resize();
+window.addEventListener('resize', resize);
+
+const vsrc = `
+attribute vec2 a_position;
+void main() { gl_Position = vec4(a_position, 0.0, 1.0); }
+`;
+
+const fsrc = `
+precision highp float;
+uniform vec2 u_resolution;
+uniform float u_time;
+
+vec3 mod289(vec3 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
+vec2 mod289(vec2 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
+vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+float snoise(vec2 v) {
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+                     -0.577350269189626, 0.024390243902439);
+  vec2 i = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod289(i);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+  m = m*m; m = m*m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+  vec3 g;
+  g.x = a0.x * x0.x + h.x * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / u_resolution;
+  float aspect = u_resolution.x / u_resolution.y;
+  float gridSize = 65.0;
+  float cellW = u_resolution.x / gridSize;
+  float cellH = cellW;
+  vec2 cell = floor(gl_FragCoord.xy / vec2(cellW, cellH));
+  vec2 cellUV = fract(gl_FragCoord.xy / vec2(cellW, cellH));
+  float flowSpeed = 0.3;
+  float noiseScale = 0.08;
+  float wavyDrift = sin(cell.y * 0.15 + u_time * 0.2) * 2.0;
+  vec2 noiseCoord = vec2(
+    (cell.x + wavyDrift) * noiseScale + u_time * flowSpeed,
+    cell.y * noiseScale + sin(u_time * 0.1) * 0.5
+  );
+  float n = snoise(noiseCoord) * 0.5 + 0.5;
+  n += snoise(noiseCoord * 2.5) * 0.25;
+  n = clamp(n, 0.0, 1.0);
+  float alpha = 0.0;
+  vec2 c = cellUV - 0.5;
+  float dist = length(c);
+  if (n < 0.35) {
+    alpha = dist < 0.08 ? 1.0 : 0.0;
+  } else if (n < 0.55) {
+    float cross1 = abs(c.x - c.y);
+    float cross2 = abs(c.x + c.y);
+    alpha = (cross1 < 0.06 || cross2 < 0.06) ? 1.0 : 0.0;
+    if (abs(c.x) + abs(c.y) > 0.45) alpha = 0.0;
+  } else if (n < 0.75) {
+    float box = max(abs(c.x), abs(c.y));
+    alpha = (box > 0.3 && box < 0.45) ? 1.0 : 0.0;
+  } else {
+    float box = max(abs(c.x), abs(c.y));
+    alpha = box < 0.42 ? 1.0 : 0.0;
+  }
+  float vignette = smoothstep(0.0, 0.3, uv.y) * smoothstep(1.0, 0.7, uv.y);
+  vignette *= smoothstep(0.0, 0.15, uv.x) * smoothstep(1.0, 0.85, uv.x);
+  float centerFade = 1.0 - smoothstep(0.15, 0.45, length((uv - vec2(0.5)) * vec2(aspect, 1.0)));
+  float density = vignette * mix(1.0, 0.15, centerFade);
+  alpha *= density;
+  gl_FragColor = vec4(0.1, 0.1, 0.1, alpha);
+}
+`;
+
+function compile(type, src) {
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  return s;
+}
+
+const prog = gl.createProgram();
+gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsrc));
+gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsrc));
+gl.linkProgram(prog);
+gl.useProgram(prog);
+
+const buf = gl.createBuffer();
+gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+const pos = gl.getAttribLocation(prog, 'a_position');
+gl.enableVertexAttribArray(pos);
+gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+
+const uRes = gl.getUniformLocation(prog, 'u_resolution');
+const uTime = gl.getUniformLocation(prog, 'u_time');
+
+gl.enable(gl.BLEND);
+gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+gl.clearColor(0.91, 0.90, 0.88, 1.0);
+
+function render(t) {
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.uniform2f(uRes, canvas.width, canvas.height);
+  gl.uniform1f(uTime, t * 0.001);
+  gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+  requestAnimationFrame(render);
+}
+requestAnimationFrame(render);
+</script>
+
+</body>
+</html>
