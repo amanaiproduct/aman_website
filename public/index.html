@@ -276,11 +276,12 @@ section {
 
 .talk-card-links a {
   color: var(--ink);
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .talk-card-links a:hover {
-  border-bottom: 1px solid var(--ink);
+  opacity: 0.6;
+  border-bottom: none !important;
 }
 
 /* WRITING */
@@ -444,16 +445,16 @@ nav a:hover { opacity: 0.5; }
   <div class="featured-item">
     <div>
       <div class="featured-source">LENNY'S NEWSLETTER</div>
-      <div class="featured-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">BEYOND VIBE CHECKS: A PM'S COMPLETE GUIDE TO EVALS</a></div>
+      <div class="featured-title"><a href="https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense">HOW TO BUILD AI PRODUCT SENSE</a></div>
     </div>
-    <div class="featured-source">APR 2025</div>
+    <div class="featured-source">JAN 2026</div>
   </div>
   <div class="featured-item">
     <div>
       <div class="featured-source">LENNY'S NEWSLETTER</div>
-      <div class="featured-title"><a href="https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense">HOW TO BUILD AI PRODUCT SENSE</a></div>
+      <div class="featured-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">BEYOND VIBE CHECKS: A PM'S COMPLETE GUIDE TO EVALS</a></div>
     </div>
-    <div class="featured-source">JAN 2026</div>
+    <div class="featured-source">APR 2025</div>
   </div>
   <div class="featured-item">
     <div>
@@ -726,7 +727,7 @@ void main() {
   vignette *= smoothstep(0.0, 0.15, uv.x) * smoothstep(1.0, 0.85, uv.x);
   float centerFade = 1.0 - smoothstep(0.15, 0.45, length((uv - vec2(0.5)) * vec2(aspect, 1.0)));
   float density = vignette * mix(1.0, 0.15, centerFade);
-  alpha *= density;
+  alpha *= density * 0.4;
   gl_FragColor = vec4(0.1, 0.1, 0.1, alpha);
 }
 `;
