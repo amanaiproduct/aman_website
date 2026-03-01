@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMAN KHAN — Visual Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ═══════════════════════════════════════════
+   VERSION TOGGLE
+   ═══════════════════════════════════════════ */
+.version-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 40px;
+  padding: 4px;
+  gap: 2px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.version-toggle button {
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 8px 16px;
+  border-radius: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.version-toggle button.active {
+  background: #fff;
+  color: #000;
+}
+.version-toggle button:hover:not(.active) {
+  color: rgba(255,255,255,0.85);
+}
+
+/* ═══════════════════════════════════════════
+   VERSION CONTAINERS
+   ═══════════════════════════════════════════ */
+.version {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.version.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════
+   V1: MIDNIGHT WORKSHOP
+   ═══════════════════════════════════════════ */
+.v1 {
+  --bg: #0F1117;
+  --bg2: #161822;
+  --accent: #00D4AA;
+  --text: #B8B8B8;
+  --text-bright: #E8E8E8;
+  --dim: #555;
+  --border: #2a2d3a;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.v1 a { color: var(--accent); border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.v1 a:hover { border-bottom-color: var(--accent); }
+
+.v1 .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+/* V1 Hero */
+.v1-hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.v1-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(0,212,170,0.03) 30px, rgba(0,212,170,0.03) 31px),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(0,212,170,0.03) 30px, rgba(0,212,170,0.03) 31px);
+  pointer-events: none;
+}
+.v1-hero-inner { position: relative; z-index: 1; width: 100%; }
+.v1-prompt { color: var(--dim); font-size: 12px; margin-bottom: 8px; }
+.v1-prompt span { color: var(--accent); }
+.v1-hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.v1-hero h1 .accent { color: var(--accent); }
+.v1-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  background: var(--accent);
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.v1-tagline {
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+.v1-cta {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg) !important;
+  padding: 12px 28px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  border: none !important;
+  transition: opacity 0.2s;
+}
+.v1-cta:hover { opacity: 0.85; border: none !important; }
+
+.v1-hero-photo {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  opacity: 0.9;
+  filter: grayscale(30%);
+}
+
+/* V1 Sections */
+.v1 section { padding: 56px 0; border-top: 1px solid var(--border); }
+.v1 .sec-label {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+.v1 .sec-label::before { content: '$ '; color: var(--dim); }
+
+/* V1 About */
+.v1-about-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+  max-width: 640px;
+}
+.v1-about-text strong { color: var(--text-bright); }
+
+.v1-social-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+/* V1 Book */
+.v1-book-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.v1-book-cover {
+  border: 1px solid var(--border);
+  width: 100%;
+}
+.v1-book-info h3 {
+  font-size: 18px;
+  color: var(--text-bright);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.v1-book-pub {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.v1-book-desc { color: var(--text); font-size: 13px; line-height: 1.8; }
+
+/* V1 Featured */
+.v1-featured-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+}
+.v1-featured-item:first-of-type { border-top: 1px solid var(--border); }
+.v1-feat-source { font-size: 11px; color: var(--dim); letter-spacing: 0.2em; text-transform: uppercase; }
+.v1-feat-title { font-size: 14px; color: var(--text-bright); font-weight: 600; margin-top: 4px; }
+.v1-feat-date { font-size: 11px; color: var(--dim); letter-spacing: 0.15em; }
+
+/* V1 Courses */
+.v1-course-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.v1-course-row:first-of-type { border-top: 1px solid var(--border); }
+.v1-course-name { font-weight: 600; font-size: 13px; color: var(--text-bright); }
+.v1-course-collab { font-size: 11px; color: var(--dim); }
+.v1-course-rating { font-size: 15px; color: var(--accent); letter-spacing: 0.1em; }
+
+/* V1 OSS */
+.v1-oss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.v1-oss-card {
+  border: 1px solid var(--border);
+  padding: 24px;
+  background: var(--bg2);
+  transition: border-color 0.3s;
+}
+.v1-oss-card:hover { border-color: var(--accent); }
+.v1-oss-card h3 { font-size: 14px; color: var(--text-bright); margin-bottom: 6px; }
+.v1-oss-stars { font-size: 14px; color: var(--accent); letter-spacing: 0.15em; }
+.v1-oss-desc { font-size: 12px; color: var(--dim); margin-top: 8px; }
+
+/* V1 Talks */
+.v1-talk-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.v1-talk-item:first-of-type { border-top: 1px solid var(--border); }
+.v1-talk-avatar {
+  width: 40px; height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.v1-talk-avatar-placeholder {
+  width: 40px; height: 40px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #e67e22, #e74c3c);
+}
+.v1-talk-body { flex: 1; min-width: 0; }
+.v1-talk-show { font-size: 13px; font-weight: 600; color: var(--text-bright); margin-bottom: 4px; }
+.v1-talk-desc { font-size: 11px; color: var(--dim); margin-bottom: 6px; }
+.v1-talk-links { display: flex; flex-direction: column; gap: 3px; font-size: 11px; }
+.v1-talk-links a::before { content: '→ '; color: var(--accent); }
+
+/* V1 Writing */
+.v1-writing-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.v1-writing-item:first-of-type { border-top: 1px solid var(--border); }
+.v1-writing-date { font-size: 11px; color: var(--dim); }
+.v1-writing-title { font-size: 13px; color: var(--text-bright); }
+.v1-writing-title:hover { color: var(--accent); }
+
+.v1 .see-more {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+}
+
+/* V1 Contact */
+.v1-contact-links {
+  display: flex;
+  gap: 28px;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.v1 footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 11px;
+  color: var(--dim);
+  letter-spacing: 0.3em;
+}
+
+/* ═══════════════════════════════════════════
+   V2: THE EDITORIAL
+   ═══════════════════════════════════════════ */
+.v2 {
+  --bg: #FAF7F2;
+  --accent: #722F37;
+  --accent-light: #8B3A44;
+  --text: #2D2D2D;
+  --text-light: #666;
+  --border: #D4CFC7;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.v2 a { color: var(--accent); transition: opacity 0.2s; }
+.v2 a:hover { opacity: 0.7; }
+
+.v2 .wrap { max-width: 980px; margin: 0 auto; padding: 0 32px; }
+.v2 .wrap-narrow { max-width: 720px; margin: 0 auto; padding: 0 32px; }
+
+/* V2 Hero */
+.v2-hero {
+  min-height: 85vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  padding: 100px 0 80px;
+}
+.v2-hero-text {}
+.v2-hero-kicker {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.v2-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.08;
+  color: var(--text);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.v2-hero h1 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--accent);
+}
+.v2-hero-sub {
+  font-size: 18px;
+  color: var(--text-light);
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 32px;
+}
+.v2-hero-cta {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff !important;
+  padding: 14px 36px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.v2-hero-cta:hover { background: var(--accent-light); opacity: 1; }
+.v2-hero-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.v2-hero-photo {
+  width: 340px;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 2px;
+  filter: sepia(10%) contrast(1.05);
+}
+.v2-hero-photo-accent {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  width: 340px;
+  height: 420px;
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* V2 Social strip */
+.v2-social-strip {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 16px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--border);
+}
+
+/* V2 Sections */
+.v2 section { padding: 64px 0; }
+.v2 .sec-rule { border: none; border-top: 1px solid var(--border); margin-bottom: 48px; }
+.v2 .sec-label-ed {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.v2 .sec-sub-ed {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* V2 About */
+.v2-about {
+  font-size: 20px;
+  line-height: 1.8;
+  color: var(--text);
+  max-width: 620px;
+}
+.v2-about::first-letter {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  float: left;
+  line-height: 0.85;
+  margin-right: 8px;
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.v2-about strong { font-weight: 600; }
+
+/* V2 Book */
+.v2-book-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.v2-book-cover {
+  width: 100%;
+  border: 1px solid var(--border);
+  box-shadow: 8px 8px 0 var(--accent);
+}
+.v2-book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.v2-book-pub {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.v2-book-desc {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-light);
+}
+
+/* V2 Pull quote */
+.v2-pullquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
+  padding-left: 24px;
+  margin: 48px 0;
+  max-width: 580px;
+}
+
+/* V2 Featured */
+.v2-featured-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: baseline;
+}
+.v2-featured-item:first-of-type { border-top: 1px solid var(--border); }
+.v2-feat-source {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+}
+.v2-feat-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 4px;
+  color: var(--text);
+}
+.v2-feat-date { font-size: 13px; color: var(--text-light); }
+
+/* V2 Courses */
+.v2-course-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.v2-course-row:first-of-type { border-top: 1px solid var(--border); }
+.v2-course-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+.v2-course-collab { font-size: 13px; color: var(--text-light); }
+.v2-course-rating { font-size: 16px; color: var(--accent); font-weight: 600; }
+
+/* V2 OSS */
+.v2-oss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.v2-oss-card {
+  border: 1px solid var(--border);
+  padding: 28px;
+  background: #fff;
+  transition: box-shadow 0.3s;
+}
+.v2-oss-card:hover { box-shadow: 4px 4px 0 var(--accent); }
+.v2-oss-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.v2-oss-stars { font-size: 14px; color: var(--accent); letter-spacing: 0.15em; font-weight: 500; }
+.v2-oss-desc { font-size: 14px; color: var(--text-light); margin-top: 10px; line-height: 1.6; }
+
+/* V2 Talks */
+.v2-talk-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.v2-talk-item:first-of-type { border-top: 1px solid var(--border); }
+.v2-talk-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+}
+.v2-talk-avatar-placeholder {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+}
+.v2-talk-body { flex: 1; min-width: 0; }
+.v2-talk-show {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.v2-talk-desc { font-size: 14px; color: var(--text-light); margin-bottom: 8px; }
+.v2-talk-links { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+
+/* V2 Writing */
+.v2-writing-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.v2-writing-item:first-of-type { border-top: 1px solid var(--border); }
+.v2-writing-date { font-size: 13px; color: var(--text-light); }
+.v2-writing-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.v2 .see-more {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* V2 Contact */
+.v2-contact-links {
+  display: flex;
+  gap: 32px;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.v2 footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-light);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════
+   V3: SIGNAL
+   ═══════════════════════════════════════════ */
+.v3 {
+  --bg: #0D0D0D;
+  --bg2: #1A1B3A;
+  --accent: #FF6B35;
+  --accent-glow: rgba(255,107,53,0.15);
+  --text: #ccc;
+  --text-bright: #F5F5F5;
+  --dim: #666;
+  --border: #2a2a3e;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.v3 a { color: var(--accent); transition: opacity 0.2s; }
+.v3 a:hover { opacity: 0.8; }
+
+.v3 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+/* V3 Hero */
+.v3-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.v3-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+.v3-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+.v3-hero h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--text-bright);
+  margin-bottom: 20px;
+}
+.v3-hero h1 .coral { color: var(--accent); }
+.v3-hero-sub {
+  font-size: 18px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 480px;
+}
+.v3-hero-cta {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff !important;
+  padding: 14px 36px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(255,107,53,0.3);
+}
+.v3-hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,107,53,0.4); opacity: 1; }
+.v3-hero-photo {
+  width: 280px;
+  height: 280px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 40px rgba(255,107,53,0.2);
+}
+
+/* V3 Sections */
+.v3 section { padding: 72px 0; }
+.v3 .sec-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.v3 .sec-label-sig {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px;
+  color: var(--text-bright);
+  margin-bottom: 32px;
+}
+.v3 .sec-label-sig .dot { color: var(--accent); }
+
+/* V3 About */
+.v3-about-text {
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 640px;
+  color: var(--text);
+}
+.v3-about-text strong { color: var(--text-bright); }
+.v3-social-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+}
+.v3-social-pill {
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  transition: border-color 0.3s, color 0.3s;
+}
+.v3-social-pill:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+/* V3 Book */
+.v3-book-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  align-items: start;
+  transition: border-color 0.3s;
+}
+.v3-book-card:hover { border-color: var(--accent); }
+.v3-book-cover { width: 100%; border-radius: 8px; }
+.v3-book-info h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+.v3-book-pub {
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.v3-book-desc { font-size: 15px; line-height: 1.8; color: var(--text); }
+
+/* V3 Featured */
+.v3-featured-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.v3-featured-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.v3-featured-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.v3-feat-source {
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.v3-feat-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  color: var(--text-bright);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.v3-feat-date { font-size: 12px; color: var(--dim); }
+
+/* V3 Courses */
+.v3-courses-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.v3-course-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.3s;
+}
+.v3-course-card:hover { border-color: var(--accent); }
+.v3-course-name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+.v3-course-collab { font-size: 12px; color: var(--dim); }
+.v3-course-rating {
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* V3 OSS */
+.v3-oss-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.v3-oss-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  transition: border-color 0.3s, transform 0.2s;
+}
+.v3-oss-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.v3-oss-card h3 { font-size: 16px; color: var(--text-bright); font-weight: 600; margin-bottom: 6px; }
+.v3-oss-stars { font-size: 14px; color: var(--accent); font-weight: 500; }
+.v3-oss-desc { font-size: 13px; color: var(--dim); margin-top: 10px; line-height: 1.6; }
+
+/* V3 Talks */
+.v3-talk-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.v3-talk-item:first-of-type { border-top: 1px solid var(--border); }
+.v3-talk-avatar {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.v3-talk-avatar-placeholder {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+}
+.v3-talk-body { flex: 1; min-width: 0; }
+.v3-talk-show { font-size: 15px; font-weight: 600; color: var(--text-bright); margin-bottom: 4px; }
+.v3-talk-desc { font-size: 13px; color: var(--dim); margin-bottom: 6px; }
+.v3-talk-links { display: flex; flex-direction: column; gap: 3px; font-size: 13px; }
+
+/* V3 Writing */
+.v3-writing-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.v3-writing-item:first-of-type { border-top: 1px solid var(--border); }
+.v3-writing-date { font-size: 12px; color: var(--dim); }
+.v3-writing-title { font-size: 15px; color: var(--text-bright); font-weight: 500; }
+
+.v3 .see-more {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* V3 Contact */
+.v3-contact-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.v3-contact-pill {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color 0.3s, color 0.3s;
+}
+.v3-contact-pill:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+
+.v3 footer {
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .version-toggle {
+    top: auto;
+    bottom: 16px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  /* V1 */
+  .v1-hero-photo { display: none; }
+  .v1-book-grid { grid-template-columns: 1fr; }
+  .v1-book-grid img { max-width: 160px; }
+  .v1-oss-grid { grid-template-columns: 1fr; }
+  .v1-course-row { grid-template-columns: 1fr auto; }
+  .v1-course-collab { display: none; }
+
+  /* V2 */
+  .v2-hero { grid-template-columns: 1fr; min-height: auto; padding: 80px 0 40px; }
+  .v2-hero-right { justify-content: flex-start; }
+  .v2-hero-photo { width: 200px; height: 260px; }
+  .v2-hero-photo-accent { width: 200px; height: 260px; }
+  .v2-book-grid { grid-template-columns: 1fr; }
+  .v2-book-cover { max-width: 180px; }
+  .v2-oss-grid { grid-template-columns: 1fr; }
+  .v2-course-row { grid-template-columns: 1fr auto; }
+  .v2-course-collab { display: none; }
+  .v2-about::first-letter { font-size: 48px; }
+
+  /* V3 */
+  .v3-hero-grid { grid-template-columns: 1fr; }
+  .v3-hero-photo { width: 200px; height: 200px; margin-bottom: 20px; order: -1; }
+  .v3-featured-grid { grid-template-columns: 1fr; }
+  .v3-courses-grid { grid-template-columns: 1fr; }
+  .v3-book-card { grid-template-columns: 1fr; }
+  .v3-book-cover { max-width: 160px; }
+  .v3-oss-grid { grid-template-columns: 1fr; }
+  .v3-social-row { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<!-- VERSION TOGGLE -->
+<div class="version-toggle" id="versionToggle">
+  <button onclick="switchVersion('v1')" id="btn-v1">V1 · Midnight</button>
+  <button onclick="switchVersion('v2')" id="btn-v2">V2 · Editorial</button>
+  <button onclick="switchVersion('v3')" id="btn-v3">V3 · Signal</button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     V1: MIDNIGHT WORKSHOP
+     ═══════════════════════════════════════════ -->
+<div class="version v1" id="version-v1">
+
+  <div class="v1-hero">
+    <div class="wrap v1-hero-inner">
+      <div class="v1-prompt"><span>~</span> $ whoami</div>
+      <h1>AMAN<br><span class="accent">KHAN</span><span class="v1-cursor"></span></h1>
+      <p class="v1-tagline">Practical resources and ideas for AI product builders</p>
+      <a href="https://aiproductplaybook.com" class="v1-cta">SUBSCRIBE →</a>
+    </div>
+    <img src="https://amank.ai/headshot.jpg" alt="Aman Khan" class="v1-hero-photo">
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <div class="sec-label">ABOUT</div>
+      <p class="v1-about-text">I'm <strong>Head of Product at Arize AI</strong>, where I help teams build and evaluate AI products. Previously built products at <strong>Spotify, Cruise, Zipline, and Apple</strong>. I teach courses on AI product management and write about what I learn.</p>
+      <div class="v1-social-row">
+        <a href="https://linkedin.com/in/amanberkeley">LINKEDIN</a>
+        <a href="https://x.com/amankhan">X/TWITTER</a>
+        <a href="https://github.com/amanaiproduct">GITHUB</a>
+        <a href="https://amankhan1.substack.com">SUBSTACK</a>
+        <a href="mailto:aman@aiproductplaybook.com">EMAIL</a>
+      </div>
+    </section>
+
+    <section id="v1-book">
+      <div class="sec-label">BOOK</div>
+      <div class="v1-book-grid">
+        <a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/"><img src="https://raw.githubusercontent.com/amanaiproduct/amanaiproduct/main/ai-product-management-book.jpg" alt="AI Product Management Book" class="v1-book-cover" /></a>
+        <div class="v1-book-info">
+          <h3><a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/">AI PRODUCT MANAGEMENT</a></h3>
+          <div class="v1-book-pub">O'REILLY MEDIA · EARLY RELEASE</div>
+          <p class="v1-book-desc">A comprehensive guide to building and managing AI products, from evaluation frameworks to production deployment. Written for product managers navigating the complexities of non-deterministic systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-label">FEATURED IN</div>
+      <div class="v1-featured-item">
+        <div>
+          <div class="v1-feat-source">LENNY'S NEWSLETTER</div>
+          <div class="v1-feat-title"><a href="https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense">How to Build AI Product Sense</a></div>
+        </div>
+        <div class="v1-feat-date">JAN 2026</div>
+      </div>
+      <div class="v1-featured-item">
+        <div>
+          <div class="v1-feat-source">LENNY'S NEWSLETTER</div>
+          <div class="v1-feat-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">Beyond Vibe Checks: A PM's Complete Guide to Evals</a></div>
+        </div>
+        <div class="v1-feat-date">APR 2025</div>
+      </div>
+      <div class="v1-featured-item">
+        <div>
+          <div class="v1-feat-source">LENNY'S PODCAST</div>
+          <div class="v1-feat-title"><a href="https://www.youtube.com/watch?v=E_rNotqs--I">Becoming an AI PM</a></div>
+        </div>
+        <div class="v1-feat-date">NOV 2024</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-label">COURSES</div>
+      <div class="v1-course-row">
+        <div class="v1-course-name"><a href="https://maven.com/aman-khan/claude-code-for-product-managers">Claude Code for PMs</a></div>
+        <div class="v1-course-collab">w/ Eric Xiao</div>
+        <div class="v1-course-rating">★ 5.0</div>
+      </div>
+      <div class="v1-course-row">
+        <div class="v1-course-name"><a href="https://maven.com/aman-khan/build-ai-product-sense">Build AI Product Sense</a></div>
+        <div class="v1-course-collab">w/ Tal Raviv</div>
+        <div class="v1-course-rating">★ 4.8</div>
+      </div>
+      <div class="v1-course-row">
+        <div class="v1-course-name"><a href="https://maven.com/aman-khan/thriving-as-an-ai-pm">AI PM Playbook</a></div>
+        <div class="v1-course-collab">Maven</div>
+        <div class="v1-course-rating">★ 4.8</div>
+      </div>
+      <div class="v1-course-row">
+        <div class="v1-course-name"><a href="https://learn.deeplearning.ai/courses/evaluating-ai-agents/">Evaluating AI Agents</a></div>
+        <div class="v1-course-collab">w/ Andrew Ng + John Gilhuly</div>
+        <div class="v1-course-rating">DEEPLEARNING.AI</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-label">OPEN SOURCE</div>
+      <div class="v1-oss-grid">
+        <div class="v1-oss-card">
+          <h3><a href="https://github.com/amanaiproduct/personal-os">personal-os</a></h3>
+          <div class="v1-oss-stars">★ 367 STARS</div>
+          <p class="v1-oss-desc">A framework for building your own AI-powered personal operating system.</p>
+        </div>
+        <div class="v1-oss-card">
+          <h3><a href="https://github.com/amanaiproduct/openclaw-setup">openclaw-setup</a></h3>
+          <div class="v1-oss-stars">★ 38 STARS</div>
+          <p class="v1-oss-desc">Quick setup guide for deploying OpenClaw agents.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-label">TALKS + PODCASTS</div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F441213db-4824-4e48-9d28-a3a18952cbfc_592x592.png" alt="Lenny's Newsletter" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">Lenny's Newsletter</div>
+          <div class="v1-talk-desc">Deep dive on building AI products, evaluations, and the future of PM</div>
+          <div class="v1-talk-links">
+            <a href="https://www.youtube.com/watch?v=E_rNotqs--I">YouTube Interview</a>
+            <a href="https://www.lennysnewsletter.com/p/beyond-vibe-checks-a-pms-complete">Beyond Vibe Checks: A PM's Complete Guide</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2dbd75e-1c5a-48ab-94ef-b24caea63cdf_1024x1024.png" alt="Peter Yang" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">Peter Yang</div>
+          <div class="v1-talk-desc">Product management strategies, AI evaluations, and the AI stack</div>
+          <div class="v1-talk-links">
+            <a href="https://www.youtube.com/watch?v=VXdrfvqiH-0">The AI Stack We Actually Use (2026)</a>
+            <a href="https://www.youtube.com/watch?v=TL527yTpxlk">Beginner's Course on AI Evaluations</a>
+            <a href="https://www.youtube.com/watch?v=u8lEDw7pOkE">The AI Skill That Will Define Your PM Career</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://img.youtube.com/vi/2HNSG990Ew8/default.jpg" alt="AI Engineer World's Fair" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">AI Engineer World's Fair</div>
+          <div class="v1-talk-desc">Shipping AI that works: an evaluation framework for PMs</div>
+          <div class="v1-talk-links">
+            <a href="https://www.youtube.com/watch?v=2HNSG990Ew8">Watch Talk</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://yt3.googleusercontent.com/91zElxE2d20UXhsFWobw-z-L6oVIaZs88jK5ojx1LAk6V_9s4IIaCA9VqqN_Jw3WkgW_VEpN=s160-c-k-c0x00ffffff-no-rj" alt="Hamel Husain" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">Hamel Husain</div>
+          <div class="v1-talk-desc">Building evaluation systems for AI applications</div>
+          <div class="v1-talk-links">
+            <a href="https://www.youtube.com/watch?v=XueTa4qrMpg">Evals Course Interview</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://www.deeplearning.ai/favicon.ico" alt="DeepLearning.AI" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">DeepLearning.AI</div>
+          <div class="v1-talk-desc">Teaching AI agent evaluation techniques to developers</div>
+          <div class="v1-talk-links">
+            <a href="https://www.deeplearning.ai/short-courses/evaluating-ai-agents/">Evaluating AI Agents Course</a>
+            <a href="https://www.youtube.com/watch?v=GzxdGpFhn04">Course Launch Interview</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F266f66c3-ca9f-4c0b-93a7-b1dc6ed89901_512x512.png" alt="Aakash Gupta" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">Aakash Gupta</div>
+          <div class="v1-talk-desc">Product growth strategies and scaling AI products</div>
+          <div class="v1-talk-links">
+            <a href="https://www.news.aakashg.com/p/aman-khan-podcast">Product Growth Podcast</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <div class="v1-talk-avatar-placeholder">MP</div>
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">Mind the Product</div>
+          <div class="v1-talk-desc">Frameworks for thriving as an AI product manager</div>
+          <div class="v1-talk-links">
+            <a href="https://www.mindtheproduct.com/how-to-thrive-as-an-ai-product-manager-aman-khan-director-of-product-arize-ai/">How to Thrive as an AI Product Manager</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://img.youtube.com/vi/NXTnmfG4h7U/default.jpg" alt="ProductCon AI" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">ProductCon AI</div>
+          <div class="v1-talk-desc">How PMs can get the most out of Cursor</div>
+          <div class="v1-talk-links">
+            <a href="https://www.youtube.com/watch?v=NXTnmfG4h7U">Watch Talk</a>
+          </div>
+        </div>
+      </div>
+      <div class="v1-talk-item">
+        <img class="v1-talk-avatar" src="https://img.youtube.com/vi/ACrOVlbk190/default.jpg" alt="Supra Insider" />
+        <div class="v1-talk-body">
+          <div class="v1-talk-show">Supra Insider</div>
+          <div class="v1-talk-desc">How PMs can bring predictability to AI</div>
+          <div class="v1-talk-links">
+            <a href="https://www.youtube.com/watch?v=ACrOVlbk190">Watch Talk</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-label">WRITING</div>
+      <div class="v1-writing-item"><div class="v1-writing-date">FEB 2026</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/how-to-make-your-openclaw-agent-useful">How to Make Your OpenClaw Agent Useful and Secure</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">FEB 2026</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/how-carl-set-up-his-personal-os-in">How Carl Set Up His Personal OS in Claude Code</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">JAN 2026</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/how-to-get-clawdbotmoltbotopenclaw">How to Get ClawdBot Set Up in an Afternoon</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">JAN 2026</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/cursor-for-product-managers">Cursor for Product Managers</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">NOV 2025</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/building-ai-product-sense-with-a">Building AI Product Sense with a Personal OS</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">AUG 2025</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/beginners-guide-to-ai-evals-walkthrough">Beginner's Guide to AI Evals (Walkthrough)</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">JUL 2025</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/how-ai-prototyping-tools-actually">How AI Prototyping Tools Actually Work</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">JUN 2025</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/how-ai-pms-and-ai-engineers-collaborate">How AI PMs and AI Engineers Collaborate on Evals</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">JUN 2025</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/the-five-skills-i-actually-use-every">The Five Skills I Actually Use Every Day as an AI PM</a></div></div>
+      <div class="v1-writing-item"><div class="v1-writing-date">APR 2025</div><div class="v1-writing-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">Beyond Vibe Checks: A PM's Complete Guide to Evals</a></div></div>
+      <a href="https://amankhan1.substack.com" class="see-more">SEE ALL WRITING →</a>
+    </section>
+
+    <section>
+      <div class="sec-label">CONTACT</div>
+      <div class="v1-contact-links">
+        <a href="https://linkedin.com/in/amanberkeley">LINKEDIN</a>
+        <a href="https://x.com/amankhan">X / TWITTER</a>
+        <a href="https://amankhan1.substack.com">SUBSTACK</a>
+        <a href="https://github.com/amanaiproduct">GITHUB</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer><div class="wrap">© 2026 AMAN KHAN</div></footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     V2: THE EDITORIAL
+     ═══════════════════════════════════════════ -->
+<div class="version v2" id="version-v2">
+
+  <div class="wrap">
+    <div class="v2-hero">
+      <div class="v2-hero-text">
+        <div class="v2-hero-kicker">Builder · Educator · Author</div>
+        <h1>Aman<br>Khan<em>.</em></h1>
+        <p class="v2-hero-sub">Practical resources and ideas for AI product builders. Head of Product at Arize AI.</p>
+        <a href="https://aiproductplaybook.com" class="v2-hero-cta">Subscribe to the Newsletter</a>
+      </div>
+      <div class="v2-hero-right">
+        <img src="https://amank.ai/headshot.jpg" alt="Aman Khan" class="v2-hero-photo">
+        <div class="v2-hero-photo-accent"></div>
+      </div>
+    </div>
+    <div class="v2-social-strip">
+      <a href="https://linkedin.com/in/amanberkeley">LinkedIn</a>
+      <a href="https://x.com/amankhan">X / Twitter</a>
+      <a href="https://github.com/amanaiproduct">GitHub</a>
+      <a href="https://amankhan1.substack.com">Substack</a>
+      <a href="mailto:aman@aiproductplaybook.com">Email</a>
+    </div>
+  </div>
+
+  <div class="wrap-narrow">
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">About</div>
+      <p class="v2-about">I'm Head of Product at <strong>Arize AI</strong>, where I help teams build and evaluate AI products. Previously built products at <strong>Spotify</strong>, <strong>Cruise</strong>, <strong>Zipline</strong>, and <strong>Apple</strong>. I teach courses on AI product management and write about what I learn.</p>
+    </section>
+
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">The Book</div>
+      <div class="sec-label-ed">AI Product Management</div>
+      <div class="v2-book-grid">
+        <a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/"><img src="https://raw.githubusercontent.com/amanaiproduct/amanaiproduct/main/ai-product-management-book.jpg" alt="AI Product Management Book" class="v2-book-cover" /></a>
+        <div class="v2-book-info">
+          <h3><a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/">AI Product Management</a></h3>
+          <div class="v2-book-pub">O'Reilly Media · Early Release</div>
+          <p class="v2-book-desc">A comprehensive guide to building and managing AI products, from evaluation frameworks to production deployment. Written for product managers navigating the complexities of non-deterministic systems.</p>
+          <div class="v2-pullquote">"Written for product managers navigating the complexities of non-deterministic systems."</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">Press & Features</div>
+      <div class="sec-label-ed">Featured In</div>
+      <div class="v2-featured-item">
+        <div>
+          <div class="v2-feat-source">Lenny's Newsletter</div>
+          <div class="v2-feat-title"><a href="https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense">How to Build AI Product Sense</a></div>
+        </div>
+        <div class="v2-feat-date">Jan 2026</div>
+      </div>
+      <div class="v2-featured-item">
+        <div>
+          <div class="v2-feat-source">Lenny's Newsletter</div>
+          <div class="v2-feat-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">Beyond Vibe Checks: A PM's Complete Guide to Evals</a></div>
+        </div>
+        <div class="v2-feat-date">Apr 2025</div>
+      </div>
+      <div class="v2-featured-item">
+        <div>
+          <div class="v2-feat-source">Lenny's Podcast</div>
+          <div class="v2-feat-title"><a href="https://www.youtube.com/watch?v=E_rNotqs--I">Becoming an AI PM</a></div>
+        </div>
+        <div class="v2-feat-date">Nov 2024</div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">Teaching</div>
+      <div class="sec-label-ed">Courses</div>
+      <div class="v2-course-row">
+        <div class="v2-course-name"><a href="https://maven.com/aman-khan/claude-code-for-product-managers">Claude Code for PMs</a></div>
+        <div class="v2-course-collab">w/ Eric Xiao</div>
+        <div class="v2-course-rating">★ 5.0</div>
+      </div>
+      <div class="v2-course-row">
+        <div class="v2-course-name"><a href="https://maven.com/aman-khan/build-ai-product-sense">Build AI Product Sense</a></div>
+        <div class="v2-course-collab">w/ Tal Raviv</div>
+        <div class="v2-course-rating">★ 4.8</div>
+      </div>
+      <div class="v2-course-row">
+        <div class="v2-course-name"><a href="https://maven.com/aman-khan/thriving-as-an-ai-pm">AI PM Playbook</a></div>
+        <div class="v2-course-collab">Maven</div>
+        <div class="v2-course-rating">★ 4.8</div>
+      </div>
+      <div class="v2-course-row">
+        <div class="v2-course-name"><a href="https://learn.deeplearning.ai/courses/evaluating-ai-agents/">Evaluating AI Agents</a></div>
+        <div class="v2-course-collab">w/ Andrew Ng + John Gilhuly</div>
+        <div class="v2-course-rating">DeepLearning.AI</div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">Code</div>
+      <div class="sec-label-ed">Open Source</div>
+      <div class="v2-oss-grid">
+        <div class="v2-oss-card">
+          <h3><a href="https://github.com/amanaiproduct/personal-os">personal-os</a></h3>
+          <div class="v2-oss-stars">★ 367 Stars</div>
+          <p class="v2-oss-desc">A framework for building your own AI-powered personal operating system.</p>
+        </div>
+        <div class="v2-oss-card">
+          <h3><a href="https://github.com/amanaiproduct/openclaw-setup">openclaw-setup</a></h3>
+          <div class="v2-oss-stars">★ 38 Stars</div>
+          <p class="v2-oss-desc">Quick setup guide for deploying OpenClaw agents.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">Speaking</div>
+      <div class="sec-label-ed">Talks & Podcasts</div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F441213db-4824-4e48-9d28-a3a18952cbfc_592x592.png" alt="Lenny's Newsletter" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">Lenny's Newsletter</div>
+          <div class="v2-talk-desc">Deep dive on building AI products, evaluations, and the future of PM</div>
+          <div class="v2-talk-links">
+            <a href="https://www.youtube.com/watch?v=E_rNotqs--I">→ YouTube Interview</a>
+            <a href="https://www.lennysnewsletter.com/p/beyond-vibe-checks-a-pms-complete">→ Beyond Vibe Checks</a>
+          </div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2dbd75e-1c5a-48ab-94ef-b24caea63cdf_1024x1024.png" alt="Peter Yang" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">Peter Yang</div>
+          <div class="v2-talk-desc">Product management strategies, AI evaluations, and the AI stack</div>
+          <div class="v2-talk-links">
+            <a href="https://www.youtube.com/watch?v=VXdrfvqiH-0">→ The AI Stack We Actually Use</a>
+            <a href="https://www.youtube.com/watch?v=TL527yTpxlk">→ Beginner's Course on AI Evaluations</a>
+            <a href="https://www.youtube.com/watch?v=u8lEDw7pOkE">→ The AI Skill That Will Define Your PM Career</a>
+          </div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://img.youtube.com/vi/2HNSG990Ew8/default.jpg" alt="AI Engineer World's Fair" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">AI Engineer World's Fair</div>
+          <div class="v2-talk-desc">Shipping AI that works: an evaluation framework for PMs</div>
+          <div class="v2-talk-links"><a href="https://www.youtube.com/watch?v=2HNSG990Ew8">→ Watch Talk</a></div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://yt3.googleusercontent.com/91zElxE2d20UXhsFWobw-z-L6oVIaZs88jK5ojx1LAk6V_9s4IIaCA9VqqN_Jw3WkgW_VEpN=s160-c-k-c0x00ffffff-no-rj" alt="Hamel Husain" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">Hamel Husain</div>
+          <div class="v2-talk-desc">Building evaluation systems for AI applications</div>
+          <div class="v2-talk-links"><a href="https://www.youtube.com/watch?v=XueTa4qrMpg">→ Evals Course Interview</a></div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://www.deeplearning.ai/favicon.ico" alt="DeepLearning.AI" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">DeepLearning.AI</div>
+          <div class="v2-talk-desc">Teaching AI agent evaluation techniques to developers</div>
+          <div class="v2-talk-links">
+            <a href="https://www.deeplearning.ai/short-courses/evaluating-ai-agents/">→ Evaluating AI Agents Course</a>
+            <a href="https://www.youtube.com/watch?v=GzxdGpFhn04">→ Course Launch Interview</a>
+          </div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F266f66c3-ca9f-4c0b-93a7-b1dc6ed89901_512x512.png" alt="Aakash Gupta" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">Aakash Gupta</div>
+          <div class="v2-talk-desc">Product growth strategies and scaling AI products</div>
+          <div class="v2-talk-links"><a href="https://www.news.aakashg.com/p/aman-khan-podcast">→ Product Growth Podcast</a></div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <div class="v2-talk-avatar-placeholder">MP</div>
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">Mind the Product</div>
+          <div class="v2-talk-desc">Frameworks for thriving as an AI product manager</div>
+          <div class="v2-talk-links"><a href="https://www.mindtheproduct.com/how-to-thrive-as-an-ai-product-manager-aman-khan-director-of-product-arize-ai/">→ How to Thrive as an AI PM</a></div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://img.youtube.com/vi/NXTnmfG4h7U/default.jpg" alt="ProductCon AI" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">ProductCon AI</div>
+          <div class="v2-talk-desc">How PMs can get the most out of Cursor</div>
+          <div class="v2-talk-links"><a href="https://www.youtube.com/watch?v=NXTnmfG4h7U">→ Watch Talk</a></div>
+        </div>
+      </div>
+      <div class="v2-talk-item">
+        <img class="v2-talk-avatar" src="https://img.youtube.com/vi/ACrOVlbk190/default.jpg" alt="Supra Insider" />
+        <div class="v2-talk-body">
+          <div class="v2-talk-show">Supra Insider</div>
+          <div class="v2-talk-desc">How PMs can bring predictability to AI</div>
+          <div class="v2-talk-links"><a href="https://www.youtube.com/watch?v=ACrOVlbk190">→ Watch Talk</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-sub-ed">Archive</div>
+      <div class="sec-label-ed">Writing</div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Feb 2026</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/how-to-make-your-openclaw-agent-useful">How to Make Your OpenClaw Agent Useful and Secure</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Feb 2026</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/how-carl-set-up-his-personal-os-in">How Carl Set Up His Personal OS in Claude Code</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Jan 2026</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/how-to-get-clawdbotmoltbotopenclaw">How to Get ClawdBot Set Up in an Afternoon</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Jan 2026</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/cursor-for-product-managers">Cursor for Product Managers</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Nov 2025</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/building-ai-product-sense-with-a">Building AI Product Sense with a Personal OS</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Aug 2025</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/beginners-guide-to-ai-evals-walkthrough">Beginner's Guide to AI Evals (Walkthrough)</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Jul 2025</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/how-ai-prototyping-tools-actually">How AI Prototyping Tools Actually Work</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Jun 2025</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/how-ai-pms-and-ai-engineers-collaborate">How AI PMs and AI Engineers Collaborate on Evals</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Jun 2025</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/the-five-skills-i-actually-use-every">The Five Skills I Actually Use Every Day as an AI PM</a></div></div>
+      <div class="v2-writing-item"><div class="v2-writing-date">Apr 2025</div><div class="v2-writing-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">Beyond Vibe Checks: A PM's Complete Guide to Evals</a></div></div>
+      <a href="https://amankhan1.substack.com" class="see-more">See All Writing →</a>
+    </section>
+
+    <section>
+      <hr class="sec-rule">
+      <div class="sec-label-ed">Get in Touch</div>
+      <div class="v2-contact-links">
+        <a href="https://linkedin.com/in/amanberkeley">LinkedIn</a>
+        <a href="https://x.com/amankhan">X / Twitter</a>
+        <a href="https://amankhan1.substack.com">Substack</a>
+        <a href="https://github.com/amanaiproduct">GitHub</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer><div class="wrap">© 2026 Aman Khan</div></footer>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     V3: SIGNAL
+     ═══════════════════════════════════════════ -->
+<div class="version v3" id="version-v3">
+
+  <div class="v3-hero">
+    <div class="wrap">
+      <div class="v3-hero-grid">
+        <div>
+          <h1>Aman<br><span class="coral">Khan</span></h1>
+          <p class="v3-hero-sub">Practical resources and ideas for AI product builders. Head of Product at Arize AI.</p>
+          <a href="https://aiproductplaybook.com" class="v3-hero-cta">Subscribe →</a>
+        </div>
+        <img src="https://amank.ai/headshot.jpg" alt="Aman Khan" class="v3-hero-photo">
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">About<span class="dot">.</span></div>
+      <p class="v3-about-text">I'm <strong>Head of Product at Arize AI</strong>, where I help teams build and evaluate AI products. Previously built products at <strong>Spotify, Cruise, Zipline, and Apple</strong>. I teach courses on AI product management and write about what I learn.</p>
+      <div class="v3-social-row">
+        <a href="https://linkedin.com/in/amanberkeley" class="v3-social-pill">LinkedIn</a>
+        <a href="https://x.com/amankhan" class="v3-social-pill">X / Twitter</a>
+        <a href="https://github.com/amanaiproduct" class="v3-social-pill">GitHub</a>
+        <a href="https://amankhan1.substack.com" class="v3-social-pill">Substack</a>
+        <a href="mailto:aman@aiproductplaybook.com" class="v3-social-pill">Email</a>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">The Book<span class="dot">.</span></div>
+      <div class="v3-book-card">
+        <a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/"><img src="https://raw.githubusercontent.com/amanaiproduct/amanaiproduct/main/ai-product-management-book.jpg" alt="AI Product Management Book" class="v3-book-cover" /></a>
+        <div class="v3-book-info">
+          <h3><a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/">AI Product Management</a></h3>
+          <div class="v3-book-pub">O'Reilly Media · Early Release</div>
+          <p class="v3-book-desc">A comprehensive guide to building and managing AI products, from evaluation frameworks to production deployment. Written for product managers navigating the complexities of non-deterministic systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">Featured In<span class="dot">.</span></div>
+      <div class="v3-featured-grid">
+        <a href="https://www.lennysnewsletter.com/p/how-to-build-ai-product-sense" class="v3-featured-card">
+          <div class="v3-feat-source">Lenny's Newsletter</div>
+          <div class="v3-feat-title">How to Build AI Product Sense</div>
+          <div class="v3-feat-date">Jan 2026</div>
+        </a>
+        <a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete" class="v3-featured-card">
+          <div class="v3-feat-source">Lenny's Newsletter</div>
+          <div class="v3-feat-title">Beyond Vibe Checks: A PM's Complete Guide to Evals</div>
+          <div class="v3-feat-date">Apr 2025</div>
+        </a>
+        <a href="https://www.youtube.com/watch?v=E_rNotqs--I" class="v3-featured-card">
+          <div class="v3-feat-source">Lenny's Podcast</div>
+          <div class="v3-feat-title">Becoming an AI PM</div>
+          <div class="v3-feat-date">Nov 2024</div>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">Courses<span class="dot">.</span></div>
+      <div class="v3-courses-grid">
+        <a href="https://maven.com/aman-khan/claude-code-for-product-managers" class="v3-course-card">
+          <div>
+            <div class="v3-course-name">Claude Code for PMs</div>
+            <div class="v3-course-collab">w/ Eric Xiao</div>
+          </div>
+          <div class="v3-course-rating">★ 5.0</div>
+        </a>
+        <a href="https://maven.com/aman-khan/build-ai-product-sense" class="v3-course-card">
+          <div>
+            <div class="v3-course-name">Build AI Product Sense</div>
+            <div class="v3-course-collab">w/ Tal Raviv</div>
+          </div>
+          <div class="v3-course-rating">★ 4.8</div>
+        </a>
+        <a href="https://maven.com/aman-khan/thriving-as-an-ai-pm" class="v3-course-card">
+          <div>
+            <div class="v3-course-name">AI PM Playbook</div>
+            <div class="v3-course-collab">Maven</div>
+          </div>
+          <div class="v3-course-rating">★ 4.8</div>
+        </a>
+        <a href="https://learn.deeplearning.ai/courses/evaluating-ai-agents/" class="v3-course-card">
+          <div>
+            <div class="v3-course-name">Evaluating AI Agents</div>
+            <div class="v3-course-collab">w/ Andrew Ng + John Gilhuly</div>
+          </div>
+          <div class="v3-course-rating">DL.AI</div>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">Open Source<span class="dot">.</span></div>
+      <div class="v3-oss-grid">
+        <a href="https://github.com/amanaiproduct/personal-os" class="v3-oss-card">
+          <h3>personal-os</h3>
+          <div class="v3-oss-stars">★ 367 Stars</div>
+          <p class="v3-oss-desc">A framework for building your own AI-powered personal operating system.</p>
+        </a>
+        <a href="https://github.com/amanaiproduct/openclaw-setup" class="v3-oss-card">
+          <h3>openclaw-setup</h3>
+          <div class="v3-oss-stars">★ 38 Stars</div>
+          <p class="v3-oss-desc">Quick setup guide for deploying OpenClaw agents.</p>
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">Talks & Podcasts<span class="dot">.</span></div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F441213db-4824-4e48-9d28-a3a18952cbfc_592x592.png" alt="Lenny's Newsletter" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">Lenny's Newsletter</div>
+          <div class="v3-talk-desc">Deep dive on building AI products, evaluations, and the future of PM</div>
+          <div class="v3-talk-links">
+            <a href="https://www.youtube.com/watch?v=E_rNotqs--I">→ YouTube Interview</a>
+            <a href="https://www.lennysnewsletter.com/p/beyond-vibe-checks-a-pms-complete">→ Beyond Vibe Checks</a>
+          </div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://substackcdn.com/image/fetch/f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd2dbd75e-1c5a-48ab-94ef-b24caea63cdf_1024x1024.png" alt="Peter Yang" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">Peter Yang</div>
+          <div class="v3-talk-desc">Product management strategies, AI evaluations, and the AI stack</div>
+          <div class="v3-talk-links">
+            <a href="https://www.youtube.com/watch?v=VXdrfvqiH-0">→ The AI Stack We Actually Use</a>
+            <a href="https://www.youtube.com/watch?v=TL527yTpxlk">→ Beginner's Course on AI Evaluations</a>
+            <a href="https://www.youtube.com/watch?v=u8lEDw7pOkE">→ The AI Skill That Will Define Your PM Career</a>
+          </div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://img.youtube.com/vi/2HNSG990Ew8/default.jpg" alt="AI Engineer World's Fair" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">AI Engineer World's Fair</div>
+          <div class="v3-talk-desc">Shipping AI that works: an evaluation framework for PMs</div>
+          <div class="v3-talk-links"><a href="https://www.youtube.com/watch?v=2HNSG990Ew8">→ Watch Talk</a></div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://yt3.googleusercontent.com/91zElxE2d20UXhsFWobw-z-L6oVIaZs88jK5ojx1LAk6V_9s4IIaCA9VqqN_Jw3WkgW_VEpN=s160-c-k-c0x00ffffff-no-rj" alt="Hamel Husain" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">Hamel Husain</div>
+          <div class="v3-talk-desc">Building evaluation systems for AI applications</div>
+          <div class="v3-talk-links"><a href="https://www.youtube.com/watch?v=XueTa4qrMpg">→ Evals Course Interview</a></div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://www.deeplearning.ai/favicon.ico" alt="DeepLearning.AI" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">DeepLearning.AI</div>
+          <div class="v3-talk-desc">Teaching AI agent evaluation techniques to developers</div>
+          <div class="v3-talk-links">
+            <a href="https://www.deeplearning.ai/short-courses/evaluating-ai-agents/">→ Evaluating AI Agents Course</a>
+            <a href="https://www.youtube.com/watch?v=GzxdGpFhn04">→ Course Launch Interview</a>
+          </div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F266f66c3-ca9f-4c0b-93a7-b1dc6ed89901_512x512.png" alt="Aakash Gupta" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">Aakash Gupta</div>
+          <div class="v3-talk-desc">Product growth strategies and scaling AI products</div>
+          <div class="v3-talk-links"><a href="https://www.news.aakashg.com/p/aman-khan-podcast">→ Product Growth Podcast</a></div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <div class="v3-talk-avatar-placeholder">MP</div>
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">Mind the Product</div>
+          <div class="v3-talk-desc">Frameworks for thriving as an AI product manager</div>
+          <div class="v3-talk-links"><a href="https://www.mindtheproduct.com/how-to-thrive-as-an-ai-product-manager-aman-khan-director-of-product-arize-ai/">→ How to Thrive as an AI PM</a></div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://img.youtube.com/vi/NXTnmfG4h7U/default.jpg" alt="ProductCon AI" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">ProductCon AI</div>
+          <div class="v3-talk-desc">How PMs can get the most out of Cursor</div>
+          <div class="v3-talk-links"><a href="https://www.youtube.com/watch?v=NXTnmfG4h7U">→ Watch Talk</a></div>
+        </div>
+      </div>
+      <div class="v3-talk-item">
+        <img class="v3-talk-avatar" src="https://img.youtube.com/vi/ACrOVlbk190/default.jpg" alt="Supra Insider" />
+        <div class="v3-talk-body">
+          <div class="v3-talk-show">Supra Insider</div>
+          <div class="v3-talk-desc">How PMs can bring predictability to AI</div>
+          <div class="v3-talk-links"><a href="https://www.youtube.com/watch?v=ACrOVlbk190">→ Watch Talk</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">Writing<span class="dot">.</span></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Feb 2026</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/how-to-make-your-openclaw-agent-useful">How to Make Your OpenClaw Agent Useful and Secure</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Feb 2026</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/how-carl-set-up-his-personal-os-in">How Carl Set Up His Personal OS in Claude Code</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Jan 2026</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/how-to-get-clawdbotmoltbotopenclaw">How to Get ClawdBot Set Up in an Afternoon</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Jan 2026</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/cursor-for-product-managers">Cursor for Product Managers</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Nov 2025</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/building-ai-product-sense-with-a">Building AI Product Sense with a Personal OS</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Aug 2025</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/beginners-guide-to-ai-evals-walkthrough">Beginner's Guide to AI Evals (Walkthrough)</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Jul 2025</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/how-ai-prototyping-tools-actually">How AI Prototyping Tools Actually Work</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Jun 2025</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/how-ai-pms-and-ai-engineers-collaborate">How AI PMs and AI Engineers Collaborate on Evals</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Jun 2025</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/the-five-skills-i-actually-use-every">The Five Skills I Actually Use Every Day as an AI PM</a></div></div>
+      <div class="v3-writing-item"><div class="v3-writing-date">Apr 2025</div><div class="v3-writing-title"><a href="https://amankhan1.substack.com/p/beyond-vibe-checks-a-pms-complete">Beyond Vibe Checks: A PM's Complete Guide to Evals</a></div></div>
+      <a href="https://amankhan1.substack.com" class="see-more">See All Writing →</a>
+    </section>
+
+    <section>
+      <hr class="sec-divider">
+      <div class="sec-label-sig">Contact<span class="dot">.</span></div>
+      <div class="v3-contact-links">
+        <a href="https://linkedin.com/in/amanberkeley" class="v3-contact-pill">LinkedIn</a>
+        <a href="https://x.com/amankhan" class="v3-contact-pill">X / Twitter</a>
+        <a href="https://amankhan1.substack.com" class="v3-contact-pill">Substack</a>
+        <a href="https://github.com/amanaiproduct" class="v3-contact-pill">GitHub</a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer><div class="wrap">© 2026 Aman Khan</div></footer>
+</div>
+
+<script>
+function switchVersion(v) {
+  document.querySelectorAll('.version').forEach(el => {
+    el.classList.remove('active');
+    el.style.display = 'none';
+  });
+  document.querySelectorAll('.version-toggle button').forEach(btn => btn.classList.remove('active'));
+
+  const target = document.getElementById('version-' + v);
+  target.style.display = 'block';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => target.classList.add('active'));
+  });
+
+  document.getElementById('btn-' + v).classList.add('active');
+  localStorage.setItem('explorationVersion', v);
+  window.scrollTo(0, 0);
+}
+
+// Init
+const saved = localStorage.getItem('explorationVersion') || 'v1';
+switchVersion(saved);
+</script>
+</body>
+</html>
