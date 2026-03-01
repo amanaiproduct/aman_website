@@ -50,6 +50,17 @@ a:hover { border-bottom-color: transparent; }
   z-index: 0;
 }
 
+#hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, var(--cream) 0%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -393,6 +404,7 @@ nav a:hover { opacity: 0.5; }
     <a href="https://github.com/amanaiproduct">GITHUB</a>
     <a href="https://amankhan1.substack.com">SUBSTACK</a>
   </div>
+  <div style="text-align:center;font-size:12px;letter-spacing:1.5px;margin-top:8px;color:var(--muted);">&lt;FIRSTNAME&gt;@AIPRODUCTPLAYBOOK.COM</div>
   <div class="about-row">
     <p class="about-bio">I'm Head of Product at <a href="https://arize.com">Arize AI</a>, where I help teams build and evaluate AI products. Previously built products at Spotify, Cruise, Zipline, and Apple. I teach courses on AI product management and write about what I learn.</p>
   </div>
@@ -613,6 +625,7 @@ nav a:hover { opacity: 0.5; }
     <a href="https://amankhan1.substack.com">SUBSTACK</a>
     <a href="https://github.com/amanaiproduct">GITHUB</a>
   </div>
+  <p style="margin-top: 16px; font-size: 14px; letter-spacing: 1px;">&lt;FIRSTNAME&gt;@AIPRODUCTPLAYBOOK.COM</p>
 </section>
 
 </div>
