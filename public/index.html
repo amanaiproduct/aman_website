@@ -694,7 +694,7 @@ void main() {
   vec2 uv = gl_FragCoord.xy / u_resolution;
   float aspect = u_resolution.x / u_resolution.y;
   float isMobile = u_cssWidth < 800.0 ? 1.0 : 0.0;
-  float gridSize = isMobile > 0.5 ? 45.0 : 90.0;
+  float gridSize = isMobile > 0.5 ? 65.0 : 90.0;
   float cellW = u_resolution.x / gridSize;
   float cellH = cellW;
   vec2 cell = floor(gl_FragCoord.xy / vec2(cellW, cellH));
@@ -730,7 +730,7 @@ void main() {
   vignette *= smoothstep(0.0, 0.15, uv.x) * smoothstep(1.0, 0.85, uv.x);
   float centerFade = 1.0 - smoothstep(0.15, 0.45, length((uv - vec2(0.5)) * vec2(aspect, 1.0)));
   float density = vignette * mix(1.0, 0.15, centerFade);
-  float opacityMul = isMobile > 0.5 ? 1.2 : 0.4;
+  float opacityMul = isMobile > 0.5 ? 1.0 : 0.4;
   alpha *= density * opacityMul;
   gl_FragColor = vec4(0.1, 0.1, 0.1, alpha);
 }
