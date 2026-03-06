@@ -30,30 +30,6 @@ export default function HomePage() {
         </nav>
 
         <section className="mt-12">
-          <h2 className="text-4xl font-bold mb-4">Open Source</h2>
-          <ul className="space-y-2 text-xl">
-            <li>
-              <a href="https://github.com/amanaiproduct/personal-os" className="hover:underline" target="_blank" rel="noopener noreferrer">
-                personal-os
-              </a>
-              <span className="text-muted-foreground text-base ml-2">— AI-powered personal operating system</span>
-            </li>
-            <li>
-              <a href="https://github.com/amanaiproduct/amans-skills" className="hover:underline" target="_blank" rel="noopener noreferrer">
-                amans-skills
-              </a>
-              <span className="text-muted-foreground text-base ml-2">— My Claude Code setup: plugins, skills, and config</span>
-            </li>
-            <li>
-              <a href="https://github.com/amanaiproduct/openclaw-setup" className="hover:underline" target="_blank" rel="noopener noreferrer">
-                openclaw-setup
-              </a>
-              <span className="text-muted-foreground text-base ml-2">— Quick setup guide for OpenClaw</span>
-            </li>
-          </ul>
-        </section>
-
-        <section className="mt-12">
           <h2 className="text-4xl font-bold mb-4">Contact</h2>
           <ul className="space-y-2 text-xl">
             <li>
