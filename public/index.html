@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMAN KHAN</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -139,14 +139,46 @@ section {
   border-top: 1px solid var(--border);
 }
 
-.section-label {
-  font-size: 12px;
-  letter-spacing: 0.4em;
+#top-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 10px;
+  letter-spacing: 0.14em;
   color: var(--muted);
-  margin-bottom: 20px;
+  position: relative;
+  z-index: 101;
 }
 
-.section-label::before { content: '// '; }
+#top-banner a { color: var(--ink); border-bottom: 1px solid transparent; }
+#top-banner a:hover { border-bottom-color: var(--ink); }
+
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  font-variation-settings: 'SOFT' 40;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+@media (max-width: 600px) { .section-label { font-size: 26px; } }
 
 /* OPEN SOURCE */
 .oss-grid {
@@ -368,8 +400,9 @@ nav a:hover { opacity: 0.5; }
 </head>
 <body>
 
-<div id="top-banner" style="background:var(--ink);color:var(--cream);text-align:center;padding:10px 16px;font-size:12px;letter-spacing:0.15em;position:relative;z-index:101;">
-  <a href="https://maven.com/aman-khan/claude-code-for-product-managers" style="color:var(--cream);border-bottom:none;font-weight:500;">CHECK OUT MY COURSE &mdash; CLAUDE CODE FOR PMS &rarr;</a>
+<div id="top-banner">
+  <span>Introducing</span>
+  <a href="https://maven.com/aman-khan/claude-code-for-product-managers">Claude Code for PMs &rsaquo;</a>
 </div>
 
 <nav id="nav">
@@ -413,7 +446,7 @@ nav a:hover { opacity: 0.5; }
 <div class="container">
 
 <section id="opensource">
-  <div class="section-label">OPEN SOURCE</div>
+  <div class="section-label">Open Source</div>
   <div class="oss-grid">
     <div class="oss-card">
       <h3><a href="https://github.com/amanaiproduct/personal-os">PERSONAL-OS</a></h3>
@@ -434,7 +467,7 @@ nav a:hover { opacity: 0.5; }
 </section>
 
 <section id="book">
-  <div class="section-label">BOOK</div>
+  <div class="section-label">Book</div>
   <div class="book-grid">
     <a href="https://learning.oreilly.com/library/view/ai-product-management/0642572251048/"><img src="https://raw.githubusercontent.com/amanaiproduct/amanaiproduct/main/ai-product-management-book.jpg" alt="AI Product Management Book" class="book-cover" /></a>
     <div class="book-info">
@@ -448,7 +481,7 @@ nav a:hover { opacity: 0.5; }
 </section>
 
 <section id="featured">
-  <div class="section-label">FEATURED IN</div>
+  <div class="section-label">Featured In</div>
   <div class="featured-item">
     <div>
       <div class="featured-source">LENNY'S NEWSLETTER</div>
@@ -473,7 +506,7 @@ nav a:hover { opacity: 0.5; }
 </section>
 
 <section id="courses">
-  <div class="section-label">COURSES</div>
+  <div class="section-label">Courses</div>
   <div class="course-row">
     <div class="course-name"><a href="https://maven.com/aman-khan/claude-code-for-product-managers">CLAUDE CODE FOR PMS</a></div>
     <div class="course-collab">W/ ERIC XIAO</div>
@@ -497,7 +530,7 @@ nav a:hover { opacity: 0.5; }
 </section>
 
 <section id="talks">
-  <div class="section-label">TALKS + PODCASTS</div>
+  <div class="section-label">Talks + Podcasts</div>
   <div class="talks-list">
 
     <div class="talk-card">
@@ -608,7 +641,7 @@ nav a:hover { opacity: 0.5; }
 </section>
 
 <section id="writing">
-  <div class="section-label">WRITING</div>
+  <div class="section-label">Writing</div>
   <div class="writing-item"><div class="writing-date">APR 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/most-pms-cant-touch-production-gus">MOST PMS CAN'T TOUCH PRODUCTION. GUS BUILT A YC STARTUP TO CHANGE THAT.</a></div></div>
   <div class="writing-item"><div class="writing-date">MAR 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/im-writing-an-oreilly-book">I'M WRITING AN O'REILLY BOOK</a></div></div>
   <div class="writing-item"><div class="writing-date">MAR 2026</div><div class="writing-title"><a href="https://amankhan1.substack.com/p/every-pm-should-be-building-skills">EVERY PM SHOULD BE BUILDING SKILLS</a></div></div>
@@ -628,7 +661,7 @@ nav a:hover { opacity: 0.5; }
 </section>
 
 <section id="contact">
-  <div class="section-label">CONTACT</div>
+  <div class="section-label">Contact</div>
   <div class="contact-links">
     <a href="https://linkedin.com/in/amanberkeley">LINKEDIN</a>
     <a href="https://x.com/amankhan">X / TWITTER</a>
