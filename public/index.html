@@ -24,7 +24,7 @@
 :root{
   --bg:#12100C; --bg-1:#1A1712; --line:#2A241C; --line-2:#413828;
   --fg:#F5F0E4;
-  --fg-2:rgba(245,240,228,.58); --fg-3:rgba(245,240,228,.32); --fg-4:rgba(245,240,228,.15);
+  --fg-2:rgba(245,240,228,.72); --fg-3:rgba(245,240,228,.52); --fg-4:rgba(245,240,228,.15);
   --s1:rgba(245,240,228,.03); --s2:rgba(245,240,228,.055); --s3:rgba(245,240,228,.08); --s4:rgba(245,240,228,.12);
   --accent:#D99A5B;                 /* warm amber — status only */
   --grain-blend:overlay; --grain-op:.055;
@@ -37,7 +37,7 @@
 :root[data-theme="light"]{
   --bg:#F2EDE2; --bg-1:#EAE3D4; --line:#DBD2C0; --line-2:#BFB39A;
   --fg:#1C1810;
-  --fg-2:rgba(28,24,16,.68); --fg-3:rgba(28,24,16,.44); --fg-4:rgba(28,24,16,.22);
+  --fg-2:rgba(28,24,16,.78); --fg-3:rgba(28,24,16,.60); --fg-4:rgba(28,24,16,.22);
   --s1:rgba(28,24,16,.022); --s2:rgba(28,24,16,.042); --s3:rgba(28,24,16,.065); --s4:rgba(28,24,16,.10);
   --accent:#B0692C;
   --grain-blend:multiply; --grain-op:.045;
@@ -53,24 +53,24 @@ a{color:inherit;text-decoration:none}
 #grain{position:fixed;inset:0;z-index:80;pointer-events:none;
   opacity:var(--grain-op);mix-blend-mode:var(--grain-blend)}
 
-.label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3)}
 
 /* theme toggle */
 .theme-btn{background:transparent;border:1px solid var(--line-2);border-radius:var(--r);color:var(--fg-2);
-  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;
   cursor:pointer;transition:background .2s,color .2s}
 .theme-btn:hover{background:var(--s3);color:var(--fg)}
 .announce .container{position:relative}
 .announce .theme-btn{position:absolute;right:var(--gutter);top:50%;transform:translateY(-50%);border-color:transparent}
 @media(max-width:620px){.announce .theme-btn{position:static;transform:none;border-color:var(--line-2)}}
 .skip{position:absolute;left:-9999px;top:0;background:var(--fg);color:var(--bg);padding:10px 16px;z-index:100;
-  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+  font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
 .skip:focus{left:8px;top:8px}
 
 /* announcement */
 .announce{border-bottom:1px solid var(--line)}
 .announce .container{display:flex;justify-content:center;gap:10px;padding:9px var(--gutter);
-  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);flex-wrap:wrap}
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);flex-wrap:wrap}
 .announce a{color:var(--fg-2)} .announce a:hover{color:var(--fg)}
 
 /* nav */
@@ -80,7 +80,7 @@ a{color:inherit;text-decoration:none}
 .nav .container{display:flex;align-items:center;gap:18px;padding-top:11px;padding-bottom:11px}
 .nav-name{font-family:var(--mono);font-size:12px;letter-spacing:.1em}
 .nav-items{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-left:auto;border-radius:var(--r);overflow:hidden}
-.nav-items a{background:var(--bg);padding:7px 13px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+.nav-items a{background:var(--bg);padding:7px 13px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--fg-2);transition:background .2s,color .2s}
 .nav-items a:hover{background:var(--s3);color:var(--fg)}
 @media(max-width:760px){.nav-items{display:none}}
@@ -97,7 +97,7 @@ a{color:inherit;text-decoration:none}
 .hero-tagline{color:var(--fg-2);font-size:clamp(1rem,1.7vw,1.2rem);max-width:44ch;margin-bottom:34px}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
 
-.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;
   text-transform:uppercase;padding:12px 19px;border:1px solid transparent;border-radius:var(--r);
   transition:background .2s,border-color .2s,transform .2s,color .2s}
 .btn-primary{background:var(--fg);color:var(--bg)}
@@ -107,7 +107,7 @@ a{color:inherit;text-decoration:none}
 .btn:focus-visible,a:focus-visible,button:focus-visible{outline:1px solid var(--fg);outline-offset:2px}
 
 .terminal{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--s1);
-  padding:11px 15px;border-radius:var(--r);font-family:var(--mono);font-size:12px;color:var(--fg-2)}
+  padding:11px 15px;border-radius:var(--r);font-family:var(--mono);font-size:13px;color:var(--fg-2)}
 .terminal .sig{color:var(--fg-3)} .terminal .cmd{color:var(--fg)}
 .caret{color:var(--accent);animation:blink 1.15s step-end infinite}
 @keyframes blink{50%{opacity:0}}
@@ -123,7 +123,7 @@ section{padding:68px 0;border-bottom:1px solid var(--line)}
 a.cell:hover{background:var(--s2)}
 .cell-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
 .cell h3{font-size:17px;font-weight:400;margin-bottom:6px}
-.cell p{color:var(--fg-2);font-size:13px}
+.cell p{color:var(--fg-2);font-size:15px}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1000px){
@@ -153,9 +153,9 @@ a.cell:hover{background:var(--s2)}
 .feat-card:hover .feat-media img.logo{transform:scale(1.05)}
 .feat-card:hover .feat-media img.cover{filter:saturate(1)}
 .feat-body{padding:18px 20px 22px}
-.feat-body .src{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:10px;
+.feat-body .src{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px;
   letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:9px}
-.feat-body h3{font-size:16px;font-weight:400;line-height:1.35;color:var(--fg-2);transition:color .2s}
+.feat-body h3{font-size:17px;font-weight:400;line-height:1.35;color:var(--fg-2);transition:color .2s}
 .feat-card:hover .feat-body h3{color:var(--fg)}
 
 /* rows */
@@ -163,10 +163,10 @@ a.cell:hover{background:var(--s2)}
 .row{display:flex;align-items:baseline;gap:18px;padding:14px 8px;border-bottom:1px solid var(--line);
   transition:background .2s,padding-left .2s;border-radius:var(--r)}
 .row:hover{background:var(--s2);padding-left:14px}
-.row .date{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--fg-3);flex:0 0 78px}
-.row .title{flex:1;font-size:14px;color:var(--fg-2);transition:color .2s}
+.row .date{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--fg-3);flex:0 0 92px}
+.row .title{flex:1;font-size:16px;color:var(--fg-2);transition:color .2s}
 .row:hover .title{color:var(--fg)}
-.row .go{font-family:var(--mono);font-size:11px;color:var(--fg-4)}
+.row .go{font-family:var(--mono);font-size:13px;color:var(--fg-4)}
 .row:hover .go{color:var(--fg-2)}
 @media(max-width:600px){.row{gap:12px}.row .date{flex:0 0 62px}}
 
@@ -184,19 +184,19 @@ a.cell:hover{background:var(--s2)}
   border:1px solid var(--line-2);background:var(--s2);filter:saturate(.9)}
 .talk-avatar.pad{padding:6px;background:var(--s3);object-fit:contain}
 .talk-fallback{width:40px;height:40px;border-radius:50%;flex:0 0 40px;display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:11px;color:var(--fg-2);background:var(--s3);border:1px solid var(--line-2)}
+  font-family:var(--mono);font-size:13px;color:var(--fg-2);background:var(--s3);border:1px solid var(--line-2)}
 .talk-body{flex:1;min-width:0}
-.talk-body .who{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
-.talk-body p{color:var(--fg-2);font-size:13px;margin-bottom:10px}
-.talk-body a.lnk{display:block;font-family:var(--mono);font-size:11px;color:var(--fg-3);padding:2px 0;transition:color .2s}
+.talk-body .who{font-family:var(--mono);font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.talk-body p{color:var(--fg-2);font-size:15px;margin-bottom:10px}
+.talk-body a.lnk{display:block;font-family:var(--mono);font-size:13px;color:var(--fg-3);padding:2px 0;transition:color .2s}
 .talk-body a.lnk:hover{color:var(--fg)}
 
 footer{padding:44px 0 60px}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
 .foot-links{display:flex;gap:20px;flex-wrap:wrap}
-.foot-links a{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3)}
+.foot-links a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3)}
 .foot-links a:hover{color:var(--fg)}
-.copy{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--fg-4)}
+.copy{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--fg-4)}
 .aboutgrid{display:grid;grid-template-columns:1.4fr 1fr;gap:36px}
 @media(max-width:760px){.aboutgrid{grid-template-columns:1fr;gap:24px}}
 
@@ -237,7 +237,6 @@ footer{padding:44px 0 60px}
   <canvas id="shader"></canvas>
   <div class="hero-veil"></div>
   <div class="container hero-inner">
-    <div class="label hero-eyebrow">The AI Product Playbook</div>
     <h1 class="hero-name">Aman Khan</h1>
     <p class="hero-tagline">Practical resources and ideas for AI product builders.</p>
     <div class="hero-actions">
@@ -296,7 +295,7 @@ footer{padding:44px 0 60px}
       <div>
         <div class="cell-top"><span class="label">O'Reilly Media</span><span class="label">Early Release</span></div>
         <h3 style="font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:10px">AI Product Management</h3>
-        <p style="color:var(--fg-2);font-size:14px;max-width:60ch">A comprehensive guide to building and managing AI products, from evaluation frameworks to production deployment. Written for product managers navigating the complexities of non-deterministic systems.</p>
+        <p style="color:var(--fg-2);font-size:16px;max-width:60ch">A comprehensive guide to building and managing AI products, from evaluation frameworks to production deployment. Written for product managers navigating the complexities of non-deterministic systems.</p>
         <div style="margin-top:18px"><span class="dot"></span> <span class="label">In Progress</span></div>
       </div>
     </a>
@@ -338,16 +337,16 @@ footer{padding:44px 0 60px}
     <div class="grid g4">
       <a class="cell" href="https://maven.com/aman-khan/claude-code-for-product-managers">
         <div class="cell-top"><span class="label">Maven</span><span class="stars"><svg class="sym" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8l3.1 6.9 7.5.8-5.6 5.1 1.6 7.4-6.6-3.8-6.6 3.8 1.6-7.4L1.4 9.5l7.5-.8z"/></svg>5.0</span></div>
-        <h3 style="font-size:15px">Claude Code for PMs</h3><p>with Eric Xiao</p></a>
+        <h3 style="font-size:17px">Claude Code for PMs</h3><p>with Eric Xiao</p></a>
       <a class="cell" href="https://maven.com/aman-khan/build-ai-product-sense">
         <div class="cell-top"><span class="label">Maven</span><span class="stars"><svg class="sym" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8l3.1 6.9 7.5.8-5.6 5.1 1.6 7.4-6.6-3.8-6.6 3.8 1.6-7.4L1.4 9.5l7.5-.8z"/></svg>4.8</span></div>
-        <h3 style="font-size:15px">Build AI Product Sense</h3><p>with Tal Raviv</p></a>
+        <h3 style="font-size:17px">Build AI Product Sense</h3><p>with Tal Raviv</p></a>
       <a class="cell" href="https://maven.com/aman-khan/thriving-as-an-ai-pm">
         <div class="cell-top"><span class="label">Maven</span><span class="stars"><svg class="sym" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.8l3.1 6.9 7.5.8-5.6 5.1 1.6 7.4-6.6-3.8-6.6 3.8 1.6-7.4L1.4 9.5l7.5-.8z"/></svg>4.8</span></div>
-        <h3 style="font-size:15px">AI PM Playbook</h3><p>Self-paced</p></a>
+        <h3 style="font-size:17px">AI PM Playbook</h3><p>Self-paced</p></a>
       <a class="cell" href="https://learn.deeplearning.ai/courses/evaluating-ai-agents/">
         <div class="cell-top"><span class="label">DeepLearning.AI</span></div>
-        <h3 style="font-size:15px">Evaluating AI Agents</h3><p>with Andrew Ng + John Gilhuly</p></a>
+        <h3 style="font-size:17px">Evaluating AI Agents</h3><p>with Andrew Ng + John Gilhuly</p></a>
     </div>
   </div>
 </section>
