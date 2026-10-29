@@ -1,5 +1,9 @@
 {
+  "redirects": [
+    { "source": "/weekly", "destination": "/weekly/", "permanent": false }
+  ],
   "rewrites": [
+    { "source": "/weekly/:path*", "destination": "https://aman-weekly.surge.sh/:path*" },
     { "source": "/", "destination": "/index.html" }
   ]
 }
