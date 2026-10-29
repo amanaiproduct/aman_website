@@ -71,6 +71,9 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .deepdive { font-size: var(--small); }
 .header-actions { display: flex; align-items: flex-start; gap: 1rem; }
 .theme-toggle {
+  display: grid;
+  place-items: center;
+  min-width: 2.75rem;
   min-height: 2.75rem;
   padding: 0.65rem 0;
   border: 0;
@@ -81,7 +84,11 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   white-space: nowrap;
   cursor: pointer;
 }
-.theme-toggle:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.theme-toggle:hover { color: var(--muted); }
+.theme-toggle svg { width: 1.25rem; height: 1.25rem; }
+.theme-toggle .theme-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
 .deepdive summary { min-height: 2.75rem; padding-block: 0.65rem; }
 .deepdive nav { display: flex; flex-direction: column; padding-block: 0.25rem 0.5rem; }
 .deepdive a { display: flex; align-items: center; min-height: 2.75rem; }

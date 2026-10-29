@@ -4,7 +4,9 @@ const themeToggle = document.querySelector(".theme-toggle");
 const deviceTheme = matchMedia("(prefers-color-scheme: dark)");
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
-  themeToggle.setAttribute("aria-pressed", String(theme === "dark"));
+  const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+  themeToggle.setAttribute("aria-label", label);
+  themeToggle.title = label;
   document.querySelector('meta[name="theme-color"]').content = theme === "dark" ? "#171717" : "#ffffff";
 }
 applyTheme(document.documentElement.dataset.theme);
