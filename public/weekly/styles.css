@@ -68,8 +68,8 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   text-decoration: none;
   white-space: nowrap;
 }
-.deepdive { font-size: var(--small); }
-.header-actions { display: flex; align-items: flex-start; gap: 1rem; }
+.deepdive { position: relative; font-size: var(--small); }
+.header-actions { display: flex; align-items: flex-start; gap: 0.25rem; }
 .theme-toggle {
   display: grid;
   place-items: center;
@@ -89,8 +89,23 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .theme-toggle .theme-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .theme-moon { display: none; }
 :root[data-theme="dark"] .theme-toggle .theme-sun { display: block; }
-.deepdive summary { min-height: 2.75rem; padding-block: 0.65rem; }
-.deepdive nav { display: flex; flex-direction: column; padding-block: 0.25rem 0.5rem; }
+.deepdive summary { display: grid; place-items: center; width: 2.75rem; min-height: 2.75rem; list-style: none; }
+.deepdive summary::-webkit-details-marker { display: none; }
+.deepdive summary:hover { color: var(--muted); }
+.deepdive summary svg { width: 1.25rem; height: 1.25rem; }
+.deepdive[open] nav {
+  position: absolute;
+  z-index: 3;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 13rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+.deepdive-title { color: var(--muted); padding-block: 0.25rem; }
 .deepdive a { display: flex; align-items: center; min-height: 2.75rem; }
 .week-nav {
   overflow-x: auto;
@@ -151,10 +166,6 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   .site-header, .week-nav, #issue, .site-footer { width: calc(100% - 2rem); }
   .site-header { gap: 0.5rem; }
   .wordmark { font-size: 1.125rem; }
-}
-@media (max-width: 480px) {
-  .site-header { flex-wrap: wrap; gap: 0; }
-  .header-actions { width: 100%; justify-content: space-between; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

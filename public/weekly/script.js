@@ -2,6 +2,16 @@ const tabList = document.querySelector("#week-tabs");
 const issueRoot = document.querySelector("#issue-panel");
 const themeToggle = document.querySelector(".theme-toggle");
 const deviceTheme = matchMedia("(prefers-color-scheme: dark)");
+const deepdive = document.querySelector(".deepdive");
+document.addEventListener("pointerdown", event => {
+  if (!deepdive.contains(event.target)) deepdive.open = false;
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && deepdive.open) {
+    deepdive.open = false;
+    deepdive.querySelector("summary").focus();
+  }
+});
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const label = theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
