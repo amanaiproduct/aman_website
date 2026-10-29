@@ -1,7 +1,9 @@
 {
+  "redirects": [
+    { "source": "/weekly/jev", "destination": "/weekly/jev/index.html", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/weekly", "destination": "/weekly/index.html" },
-    { "source": "/weekly/jev", "destination": "/weekly/jev/index.html" },
     { "source": "/", "destination": "/index.html" }
   ]
 }
