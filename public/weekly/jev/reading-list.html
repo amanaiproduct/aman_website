@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Aman's collected Jev threads, concise previews, and a proposed workspace-audit experiment.">
+<title>Jev reading list — Aman’s Weekly</title>
+<style>
+:root{color-scheme:light;--paper:#f7f7f5;--ink:#161616;--muted:#575952;--rule:#d5d8d0;--blue:#3159d7;--soft:#e7ebfb;--space:1.5rem}
+*{box-sizing:border-box}html{scroll-padding-top:1.5rem;scrollbar-color:#a4aaa1 var(--paper)}body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}::selection{background:var(--soft);color:var(--ink)}a{color:var(--blue);text-underline-offset:.22em;text-decoration-thickness:1px}a:hover{text-decoration-thickness:2px;color:#18399c}:focus-visible{outline:3px solid var(--blue);outline-offset:4px}button{font:inherit;cursor:pointer}.skip{position:absolute;left:1rem;top:-8rem;background:var(--ink);color:white;padding:.75rem;z-index:2}.skip:focus{top:1rem}.frame{width:min(100% - 3rem,66rem);margin-inline:auto}header{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.25rem 0;border-bottom:1px solid var(--rule)}header a{color:var(--ink);font-size:.875rem}header nav{display:flex;gap:1.4rem}.brand{font-weight:650;text-decoration:none}.intro{padding:2rem 0 1.2rem}.intro h1{font-size:2rem;line-height:1.2;letter-spacing:-.025em;margin:0 0 .75rem;font-weight:650}.intro p{margin:.35rem 0;max-width:70ch}.meta{font-size:.875rem;color:var(--muted)}.week-nav{display:flex;gap:.5rem 1.25rem;flex-wrap:wrap;border-block:1px solid var(--rule);padding:.5rem 0}.week-nav button{color:var(--muted);background:transparent;border:0;border-bottom:2px solid transparent;padding:.6rem 0;font-size:.875rem;min-height:44px}.week-nav button[aria-pressed=true]{color:var(--ink);border-bottom-color:var(--blue);font-weight:650}.week-nav button:hover{color:var(--blue)}.list-heading{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;margin:2rem 0 .25rem}.list-heading h2{margin:0}.list-heading p{margin:0}h2{font-size:1.375rem;line-height:1.35;font-weight:650;letter-spacing:-.015em}h3{font-size:1.125rem;line-height:1.4;font-weight:650;letter-spacing:-.01em;margin:0 0 .4rem}p{margin:.5rem 0 1rem}.entry{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:2rem;padding:1.6rem 0;border-bottom:1px solid var(--rule)}.entry[hidden]{display:none}.entry .byline p{margin:0}.entry h3 a{color:var(--ink)}.entry p{max-width:70ch;margin:.4rem 0}.angle{color:#3e3e39}.angle strong{font-weight:600}.note{font-size:.875rem;color:var(--muted)}.entry .source{display:inline-block;font-size:.875rem;margin-top:.6rem;padding:.15rem 0}.section{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--ink)}.section>h2{margin:.25rem 0 .8rem}.section>p{max-width:74ch}.steps{list-style:none;padding:0;counter-reset:steps;margin:1.75rem 0}.steps>li{counter-increment:steps;display:grid;grid-template-columns:2rem minmax(0,1fr);gap:1rem;padding:1.15rem 0;border-top:1px solid var(--rule)}.steps>li:before{content:counter(steps);color:var(--blue);font-variant-numeric:tabular-nums;font-size:1.125rem}.steps p{max-width:72ch;margin:.4rem 0}.spec{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:.5rem 1rem;margin:1.25rem 0}.spec dt{font-weight:600}.spec dd{margin:0;max-width:65ch}.code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.875rem;overflow-wrap:anywhere}.resources{padding-left:1.25rem}.resources li{margin:.55rem 0}.status{padding:1rem 0;border-block:1px solid var(--rule)}footer{margin-top:3rem;padding:1.5rem 0 2.5rem;border-top:1px solid var(--rule);font-size:.875rem;color:var(--muted)}footer p{max-width:72ch}.plain-link{overflow-wrap:anywhere}@media(max-width:650px){.frame{width:calc(100% - 2rem)}header{align-items:flex-start}header nav{gap:1rem}.entry{grid-template-columns:1fr;gap:.5rem;padding:1.4rem 0}.byline{display:flex;flex-wrap:wrap;gap:.75rem}.intro h1{font-size:1.875rem}.list-heading{align-items:flex-start;flex-direction:column;gap:.2rem}.spec{grid-template-columns:1fr;gap:.2rem}.spec dd{margin-bottom:.75rem}.steps>li{grid-template-columns:1.25rem minmax(0,1fr);gap:.65rem}}@media print{body{background:white}.frame{width:100%}.skip,.week-nav{display:none}.entry[hidden]{display:grid}.entry,.steps>li{break-inside:avoid}header nav{display:none}a{color:inherit}.section{break-before:auto}}
+.skip:hover{color:white}.week-nav[hidden]{display:none}@media print{#count{display:none}}
+</style>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style id="adaline-reading">
+@font-face{font-family:Inter;src:url('fonts/inter-latin.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap}
+:root{--paper:#FBFDF6;--ink:#0A1D08;--muted:#53634B;--rule:#DCE4D2;--blue:#203B14;--soft:#ECF2DF}
+html{scrollbar-color:#9CAA90 var(--paper)}
+body{font-family:Akkurat,Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:4px}
+a:hover{color:var(--ink)}
+.frame{width:min(100% - 64px,1040px)}
+header{padding:28px 0;border-color:var(--rule)}
+header a{font-size:14px;font-weight:500}
+header nav{gap:24px}
+.brand{font-size:18px;font-weight:600;letter-spacing:-.025em}
+.intro{padding:60px 0 32px}
+.intro h1{font-family:Inter,sans-serif;font-size:53px;line-height:1.12;font-weight:700;letter-spacing:-.035em;margin-bottom:20px}
+.intro p{max-width:62ch;margin:8px 0}
+.meta{font-size:14px;line-height:1.6;color:var(--muted)}
+.week-nav{border:0;padding:0;gap:10px;margin:4px 0 40px}
+.week-nav button{padding:10px 20px;border:1px solid var(--rule);border-radius:20px;color:var(--blue);background:transparent;font-size:14px;font-weight:500;line-height:22px;min-height:44px;transition:background-color 140ms,color 140ms}
+.week-nav button:hover{background:var(--soft);color:var(--ink)}
+.week-nav button[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:var(--paper);font-weight:500}
+.list-heading{margin:0 0 24px;align-items:center}
+h2{font-family:Inter,sans-serif;font-size:30px;line-height:1.25;letter-spacing:-.025em;font-weight:700}
+h3{font-family:Inter,sans-serif;font-size:22px;line-height:1.4;letter-spacing:-.02em;font-weight:600;margin-bottom:14px;text-wrap:pretty}
+.entry{grid-template-columns:144px minmax(0,1fr);gap:32px;padding:32px;margin:0 0 16px;border:1px solid var(--rule);border-radius:20px;background:#FEFFF9}
+.entry .byline{padding-top:3px;font-size:14px;line-height:1.6}
+.entry .byline p:first-child{font-weight:600;margin-bottom:6px}
+.entry h3 a{text-decoration:none}
+.entry h3 a:hover{text-decoration:underline}
+.entry p{max-width:64ch;margin:0 0 16px}
+.entry .angle{color:var(--ink);margin-top:20px}
+.angle strong{font-weight:600}
+.entry .note{font-size:16px;line-height:1.6;color:var(--muted);margin-bottom:14px}
+.entry .source{font-size:14px;line-height:1.5;font-weight:500;margin-top:4px;padding:8px 0}
+.thread-previews{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:24px 0}
+.thread-previews.with-visual{grid-template-columns:repeat(2,minmax(0,1fr))}
+.thread-preview{margin:0;min-width:0}
+.preview-frame{display:block;overflow:hidden;background:white;border:1px solid var(--rule);border-radius:12px}
+.preview-frame img{display:block;width:100%;height:auto}
+.preview-frame.opening{max-height:320px}
+.preview-frame.visual img{height:320px;object-fit:contain}
+.thread-preview figcaption{margin-top:9px;color:var(--muted);font-size:14px;line-height:1.5}
+.thread-preview figcaption a{display:inline-block;padding:4px 0}
+@media(max-width:700px){.thread-previews.with-visual{grid-template-columns:1fr}.preview-frame.visual img{height:auto;max-height:480px;object-fit:contain}}
+.section{margin-top:64px;padding-top:40px;border-color:var(--rule)}
+.section>h2{margin:0 0 20px}
+.section>p{max-width:68ch}
+.steps{margin:32px 0 40px}
+.steps>li{grid-template-columns:32px minmax(0,1fr);gap:20px;padding:28px 0;border-color:var(--rule)}
+.steps>li:before{font-family:Inter,sans-serif;font-size:18px;font-weight:600;line-height:32px}
+.steps p{max-width:66ch;margin:0 0 16px}
+.note{font-size:16px;line-height:1.6;color:var(--muted)}
+.spec{grid-template-columns:144px minmax(0,1fr);gap:20px 32px;margin:28px 0}
+.spec dt{font-size:16px;line-height:1.8;font-weight:600}
+.spec dd{max-width:64ch}
+.code{font-size:16px;line-height:1.8}
+.status{margin-top:28px;padding:24px;border:1px solid var(--rule);border-radius:20px;background:var(--soft);font-size:16px}
+.resources{margin:24px 0;padding-left:22px;font-size:16px}
+.resources li{margin:14px 0}
+footer{margin-top:64px;padding:28px 0 40px;border-color:var(--rule);font-size:14px}
+footer p{max-width:76ch}
+.skip{border-radius:20px;background:var(--blue)}
+.skip:hover{color:white}
+@media(max-width:700px){
+ .frame{width:calc(100% - 40px)}header{padding:22px 0;gap:16px}header nav{gap:18px}
+ .intro{padding:40px 0 24px}.intro h1{font-size:38px;letter-spacing:-.03em}
+ .week-nav{gap:8px;margin-bottom:32px}.week-nav button{padding:10px 14px}
+ .list-heading{align-items:flex-start;gap:8px;margin-bottom:20px}h2{font-size:28px}h3{font-size:22px}
+ .entry{grid-template-columns:1fr;gap:14px;padding:24px 20px}.entry .byline{display:flex;gap:12px;flex-wrap:wrap;padding:0}.entry .byline p:first-child{margin-bottom:0}
+ .section{margin-top:48px;padding-top:32px}.steps>li{grid-template-columns:22px minmax(0,1fr);gap:12px}
+ .spec{grid-template-columns:1fr;gap:6px}.spec dd{margin-bottom:14px}.status{padding:20px}
+}
+@media(prefers-reduced-motion:reduce){.week-nav button{transition:none}}
+@media print{body{background:white}.frame{width:100%}.entry{padding:20px;box-shadow:none}.section{margin-top:32px}header{padding:12px 0}.intro{padding:24px 0}.intro h1{font-size:38px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#threads">Skip to threads</a>
+<div class="frame">
+<header><a class="brand" href="https://aman-weekly.surge.sh/">Aman’s Weekly</a><nav aria-label="On this page"><a href="#threads">Threads</a><a href="#plan">Proposed plan</a><a href="#resources">Resources</a></nav></header>
+<main>
+<section class="intro" aria-labelledby="page-title">
+<h1 id="page-title">The Jev reading list</h1>
+<p>Eight references, their useful ideas, and one next experiment.</p>
+<p class="meta">Updated September 20, 2026 · Original-post screenshots and summary previews.</p>
+</section>
+<nav class="week-nav" aria-label="Filter threads by Sunday-start week" hidden>
+<button type="button" data-week="all" aria-pressed="true">All threads</button>
+<button type="button" data-week="2026-09-20" aria-pressed="false">Sep 20–26</button>
+<button type="button" data-week="2026-09-13" aria-pressed="false">Sep 13–19</button>
+</nav>
+<section id="threads" aria-labelledby="threads-title">
+<div class="list-heading"><h2 id="threads-title">Saved threads</h2><p class="meta" id="count" role="status" aria-live="polite">8 threads · newest first</p></div>
+<article class="entry" data-week="2026-09-20">
+<div class="byline"><p>elvis · @omarsar0</p><p class="meta"><time datetime="2026-09-20">Sep 20, 2026</time></p></div>
+<div><h3><a href="https://x.com/omarsar0/status/2101774405521301681">A beginner’s guide to Jev</a></h3>
+<div class="thread-previews"><figure class="thread-preview"><a class="preview-frame" href="previews/elvis-beginners-guide.png" target="_blank" rel="noopener" aria-label="Open screenshot of elvis’s beginner’s guide"><img src="previews/elvis-beginners-guide.png" width="590" height="410" loading="lazy" decoding="async" alt="Original article header and A Primer to Jev cover graphic"></a><figcaption>Original article screenshot · <a href="previews/elvis-beginners-guide.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>A practical introduction to state, typed questions, and probability distributions. The linked playground presents six workflows and four harder cases, including ambiguous evidence and instructions embedded in the input.</p>
+<p class="angle"><strong>Our angle:</strong> use those harder cases to test the checkpoint’s behavior. Keep exact checks and permissions in code; use model uncertainty to identify cases needing review.</p>
+<p class="note">Reference logged, not an integration. The linked playground has not been tested here. Noul returns a yes-probability, not a separate confidence score.</p>
+<a class="source" href="https://x.com/omarsar0/status/2101774405521301681">Read elvis’s guide</a> · <a class="source" href="https://academy.dair.ai/resources/introduction-to-jev">Explore the playground</a></div>
+</article>
+<article class="entry" data-week="2026-09-20">
+<div class="byline"><p>Shann Holmberg</p><p class="meta"><time datetime="2026-09-20">Sep 20, 2026</time></p></div>
+<div><h3><a href="https://x.com/shannholmberg/status/2101751911481573598">Audit the workspace before choosing an integration</a></h3>
+<div class="thread-previews with-visual"><figure class="thread-preview"><a class="preview-frame opening" href="previews/shann-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of Shann Holmberg’s post"><img src="previews/shann-post.png" width="65536" height="4292542531" loading="lazy" decoding="async" alt="Screenshot of Shann Holmberg’s original Jev post"></a><figcaption>Opening of the original post · <a href="previews/shann-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure><figure class="thread-preview"><a class="preview-frame visual" href="previews/shann-visual.png" target="_blank" rel="noopener" aria-label="Open Shann Holmberg’s attached visual at full size"><img src="previews/shann-visual.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Jev Audit workflow diagram from Shann’s post"></a><figcaption>Attached visual · <a href="previews/shann-visual.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>Start with a read-only review of existing projects. For each candidate, specify the required evidence, a narrow typed question, and what the application should do when the answer is wrong or uncertain. Test one repeated task against reviewed examples.</p>
+<p class="angle"><strong>Our angle:</strong> find one useful decision inside the trace-to-eval workflow, while explicitly retaining tasks that ordinary code already handles well.</p>
+<p class="note">An audit method, not a demonstrated improvement. The embedded prompt has not been executed.</p>
+<a class="source" href="https://x.com/shannholmberg/status/2101751911481573598">Read Shann’s original thread</a> · <a class="source" href="#plan">See the proposed plan</a></div>
+</article>
+<article class="entry" data-week="2026-09-13">
+<div class="byline"><p>Nate B. Jones</p><p class="meta"><time datetime="2026-09-19">Sep 19, 2026</time></p></div>
+<div><h3><a href="https://x.com/natebjones/status/2101421649774236145">Four patterns beyond the classifier demo</a></h3>
+<div class="thread-previews"><figure class="thread-preview"><a class="preview-frame opening" href="previews/nate-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of Nate B. Jones’s post"><img src="previews/nate-post.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Screenshot of Nate B. Jones’s original Jev post"></a><figcaption>Opening of the original post · <a href="previews/nate-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>Interpret existing workflows, revisit archives with new questions, decide where deeper reasoning is worth spending, and attach small checks to individual items. Reported examples include ticket triage, post analysis, alert screening, and paragraph-level prose linting.</p>
+<p class="angle"><strong>Our angle:</strong> screen archived sessions for the incidents worth reviewing, then spend deeper reasoning on those cases.</p>
+<p class="note">Reported examples; their accuracy and cost savings have not been independently tested here.</p>
+<a class="source" href="https://x.com/natebjones/status/2101421649774236145">Read Nate’s original thread</a></div>
+</article>
+<article class="entry" data-week="2026-09-13">
+<div class="byline"><p>elvis · @omarsar0</p><p class="meta"><time datetime="2026-09-19">Sep 19, 2026</time></p></div>
+<div><h3><a href="https://x.com/omarsar0/status/2101349932569370826">A decision layer around the coding agent</a></h3>
+<div class="thread-previews with-visual"><figure class="thread-preview"><a class="preview-frame opening" href="previews/elvis-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of elvis’s post"><img src="previews/elvis-post.png" width="65536" height="4292542531" loading="lazy" decoding="async" alt="Screenshot of elvis’s original Jev post"></a><figcaption>Opening of the original post · <a href="previews/elvis-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure><figure class="thread-preview"><a class="preview-frame visual" href="previews/elvis-visual.png" target="_blank" rel="noopener" aria-label="Open elvis’s attached visual at full size"><img src="previews/elvis-visual.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Jev for Custom Harnesses graphic from elvis’s post"></a><figcaption>Attached visual · <a href="previews/elvis-visual.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>Explore Jev inside the agent’s surrounding software: select context, route work, evaluate progress, and check claims. The larger suggestion is to use inexpensive judgments to direct more capable reasoning.</p>
+<p class="angle"><strong>Our angle:</strong> the ask-first checkpoint skill—bounded context checks before work and evidence checks before completion.</p>
+<p class="note">The checkpoint skill is installed, with 18 passing local tests and one completed live pilot. Results are advisory; automatic per-turn inference is not enabled.</p>
+<a class="source" href="https://x.com/omarsar0/status/2101349932569370826">Read elvis’s original thread</a></div>
+</article>
+<article class="entry" data-week="2026-09-13">
+<div class="byline"><p>Josh Rosen</p><p class="meta"><time datetime="2026-09-19">Sep 19, 2026</time></p></div>
+<div><h3><a href="https://x.com/JoshARosen/status/2101346654406217965">Catch instruction drift while work is happening</a></h3>
+<div class="thread-previews"><figure class="thread-preview"><a class="preview-frame" href="previews/josh-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of Josh Rosen’s post"><img src="previews/josh-post.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Screenshot of Josh Rosen’s original Jev post"></a><figcaption>Original post screenshot · <a href="previews/josh-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>Foreman experiments with a supervisor that compares worker activity and code changes with repository instructions. Jev supplies judgments; a code-defined policy controls steering or stopping.</p>
+<p class="angle"><strong>Our angle:</strong> first test observation-only detection against real corrections. Measure false alarms before allowing interventions.</p>
+<p class="note">An experimental external project, not an installed or validated supervisor in our setup.</p>
+<a class="source" href="https://x.com/JoshARosen/status/2101346654406217965">Read Josh’s original thread</a> · <a class="source" href="https://github.com/thruwire/foreman">Foreman repository</a></div>
+</article>
+<article class="entry" data-week="2026-09-13">
+<div class="byline"><p>Bessi · @LLMpsycho</p><p class="meta"><time datetime="2026-09-19">Sep 19, 2026</time></p></div>
+<div><h3><a href="https://x.com/LLMpsycho/status/2101341190150852677">Teach the agent how to build with Jev</a></h3>
+<div class="thread-previews"><figure class="thread-preview"><a class="preview-frame" href="previews/bessi-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of Bessi’s post"><img src="previews/bessi-post.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Screenshot of Bessi’s original Jev post"></a><figcaption>Original post screenshot · <a href="previews/bessi-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>The TypeSafe skill gives coding agents integration guidance and a route to current documentation. Installing the skill is distinct from building a workflow that actually calls the model.</p>
+<p class="angle"><strong>Our angle:</strong> use the installed TypeSafe guidance for small evidence-checking features, not another generic agent framework.</p>
+<p class="note">TypeSafe’s integration skill is installed. That does not activate our separate checkpoint experiment.</p>
+<a class="source" href="https://x.com/LLMpsycho/status/2101341190150852677">Read Bessi’s original thread</a></div>
+</article>
+<article class="entry" data-week="2026-09-13">
+<div class="byline"><p>Grok</p><p class="meta"><time datetime="2026-09-18">Sep 18, 2026</time></p></div>
+<div><h3><a href="https://x.com/grok/status/2101071508567150743">Small decisions throughout an agent workflow</a></h3>
+<div class="thread-previews"><figure class="thread-preview"><a class="preview-frame" href="previews/grok-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of Grok’s post"><img src="previews/grok-post.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Screenshot of Grok’s original Jev post"></a><figcaption>Original post screenshot · <a href="previews/grok-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>An application list spanning action selection, tool-risk checks, model routing, progress detection, context selection, skill activation, guardrails, inbox triage, and retrieval ranking.</p>
+<p class="angle"><strong>Our angle:</strong> make individual judgments inspectable through requirement heatmaps and context-relevance matrices.</p>
+<p class="note">Ideas, not a measured ranking. Our existing maps display recorded judgments over prepared summaries, not a live raw-trace audit.</p>
+<a class="source" href="https://x.com/grok/status/2101071508567150743">Read the original idea list</a></div>
+</article>
+<article class="entry" data-week="2026-09-13">
+<div class="byline"><p>Vinny · @hot_town</p><p class="meta"><time datetime="2026-09-17">Sep 17, 2026</time></p></div>
+<div><h3><a href="https://x.com/hot_town/status/2100459012315639944">Decisions rather than conversations</a></h3>
+<div class="thread-previews with-visual"><figure class="thread-preview"><a class="preview-frame" href="previews/vinny-post.png" target="_blank" rel="noopener" aria-label="Open full screenshot of Vinny’s post"><img src="previews/vinny-post.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Screenshot of Vinny’s original Jev post"></a><figcaption>Original post screenshot · <a href="previews/vinny-post.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure><figure class="thread-preview"><a class="preview-frame visual" href="previews/vinny-visual.png" target="_blank" rel="noopener" aria-label="Open Vinny’s attached visual at full size"><img src="previews/vinny-visual.png" width="65536" height="4293001688" loading="lazy" decoding="async" alt="Still at 00:03 from the Jev explainer video quoted by Vinny"></a><figcaption>Video still · 00:03 · <a href="previews/vinny-visual.png" target="_blank" rel="noopener">Open full size</a></figcaption></figure></div>
+<p>A shared explainer introduces Jev as a model built for constrained decisions: choices, scores, and probabilities that software can use directly.</p>
+<p class="angle"><strong>Our angle:</strong> use the right output shape for the job. A decision model can complement a writing or reasoning model.</p>
+<p class="note">Launch speed and cost multipliers remain source claims, not benchmarks we have reproduced.</p>
+<a class="source" href="https://x.com/hot_town/status/2100459012315639944">Read the original explainer post</a></div>
+</article>
+</section>
+<section id="plan" class="section" aria-labelledby="plan-title">
+<h2 id="plan-title">Proposed plan: audit, then test one decision</h2>
+<p>Adapted from <a href="https://x.com/shannholmberg/status/2101751911481573598">Shann’s audit method</a> for your private-company evals idea. This is a proposal, not an audit result or an instruction to execute the post’s prompt.</p>
+<ol class="steps">
+<li><div><h3>Map the existing workflows, read-only</h3><p>Start with the known trace/eval project, checkpoint experiment, and weekly reading tool. Inspect their instructions, documentation, prompts, and relevant code. Record exact file references, unavailable material, and how each decision works today. Inventory other projects before expanding the scope.</p><p>For knowledge retrieval, document the current search method and source-link preservation before suggesting reranking. Keep authorization, revision matching, dates, and test exit codes in ordinary code.</p><p class="note">Output: a short candidate list, including “no clear Jev use.” No files changed or integrations run during that proposed audit.</p></div></li>
+<li><div><h3>Write a decision contract for each candidate</h3><p>Specify the input, authoritative references, one atomic question, allowed answers, and the next step in code. Compare usefulness, setup effort, frequency, and the consequences of a wrong answer. Leave unknowns marked unknown.</p><p>Initial shortlist: proposal evidence review; finding corrections that could become evals; reranking a retrieved session shortlist; checking whether an eval assertion follows the task contract.</p><p class="note">Provisional recommendation: evidence review first, because prior project inspection identified a concrete review boundary—not because we have measured it outperforming alternatives.</p></div></li>
+<li><div><h3>Benchmark claim-to-evidence review first</h3><p>Curate 30 claim/evidence pairs and have you review the labels before evaluation. Include supported claims, contradictions, missing context, and apparent failures followed by recovery. Target 10 development cases and 20 held-out cases, keeping each session and related cases together in one partition; adjust the counts if necessary to preserve that separation.</p><p>Compare deterministic citation checks plus manual review with the same process assisted by Jev. Measure false “supported” decisions, per-class recall, uncertainty, review time, end-to-end latency, and actual usage/cost. A small pilot establishes feasibility, not general reliability.</p><p class="note">No reviewed 30-case set is claimed to exist yet. Private evidence must be selected, minimized, and approved before any TypeSafe call.</p></div></li>
+<li><div><h3>Keep the pilot advisory; turn useful incidents into evals</h3><p>Every finding stays in human review. Keep source references, model/question versions, and human corrections. Advance only if the held-out run shows useful catches or less review work without increasing false acceptance; otherwise revise the question or keep the current process.</p><p>For the business, the deliverable is a small private evaluation suite that helps a company judge a real agent workflow. Test that value with a prospective buyer separately. Jev is a replaceable screening component, not the product’s proof.</p><p class="note">No automatic proposal acceptance, skill rewrites, worker interruption, or public trace publishing.</p></div></li>
+</ol>
+<h3>The first decision, made concrete</h3>
+<dl class="spec">
+<dt>Input</dt><dd>One proposal claim plus the smallest sufficient, revision-pinned evidence excerpt, including relevant recovery or contrary evidence.</dd>
+<dt>Question</dt><dd>Does this evidence establish the whole claim at its stated scope and certainty?</dd>
+<dt>Answers</dt><dd><span class="code">supported · contradicted · insufficient</span>, plus the returned probability distribution and confidence.</dd>
+<dt>Code’s job</dt><dd>Validate ownership, source references, and revision; show the evidence and judgment together; retain the human decision separately.</dd>
+<dt>Failure path</dt><dd>Missing evidence: unavailable. Uncertain or wrong judgment: manual review. API failure: unavailable, never a pass. No action is authorized by a model answer.</dd>
+<dt>Starting points</dt><dd class="code">private-traces/worker/dream-proposals.ts<br>private-traces/cli/vault_review.py</dd>
+</dl>
+<p class="note">These starting points come from the September 19 project analysis; implementation details need rechecking during the proposed audit.</p>
+<p class="status"><strong>Checkpoint status:</strong> installed, with 18 local tests passing and one approved live pilot completed. That pilot is not a benchmark or a full archive audit. Recurring prompting remains undecided; this plan does not activate automatic inference.</p>
+</section>
+<section id="resources" class="section" aria-labelledby="resources-title">
+<h2 id="resources-title">Companion reading &amp; resources</h2>
+<p><a href="https://addyo.substack.com/p/brownfield-agentic-engineering">Addy Osmani — Brownfield Agentic Engineering</a><br>Not a Jev thread, but the engineering counterpart: document constraints, preserve behavior, and verify changes in existing systems.</p>
+<ul class="resources">
+<li><a href="https://github.com/typesafe-ai/skills">TypeSafe skill repository</a> · <a href="https://github.com/typesafe-ai/skills/blob/main/skills/typesafe-ai/SKILL.md">Skill instructions</a> · <a href="https://raw.githubusercontent.com/typesafe-ai/skills/main/skills/typesafe-ai/SKILL.md">Raw instructions</a></li>
+<li><a href="https://docs.typesafe.ai/llms.txt">Documentation index</a> · <a href="https://docs.typesafe.ai/concepts/how-to-build-with-system-one">Building guide</a></li>
+<li><a href="https://docs.typesafe.ai/cookbooks/citation_check">Citation-checking pattern</a> · <a href="https://docs.typesafe.ai/confidence">What confidence means</a></li>
+<li><a href="https://aman-weekly.surge.sh/jev/">Existing Jev maps</a> · <a href="https://aman-weekly.surge.sh/jev/examples.html">Original ten application examples</a></li>
+</ul>
+</section>
+</main>
+<footer><p>Collected for Aman. Weeks run Sunday–Saturday. Dates are post dates; previews are editorial summaries. No embeds, analytics, inference calls, or credentials are included. Typography uses Inter as an Akkurat fallback.</p><a href="#page-title">Back to top</a></footer>
+</div>
+<script>
+(() => {
+  const nav = document.querySelector('.week-nav');
+  const entries = [...document.querySelectorAll('.entry')];
+  const buttons = [...nav.querySelectorAll('button')];
+  const count = document.getElementById('count');
+  nav.hidden = false;
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const week = button.dataset.week;
+    buttons.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+    entries.forEach(entry => { entry.hidden = week !== 'all' && entry.dataset.week !== week; });
+    const total = entries.filter(entry => !entry.hidden).length;
+    count.textContent = `${total} ${total === 1 ? 'thread' : 'threads'} · ${week === 'all' ? 'newest first' : button.textContent}`;
+  }));
+})();
+</script>
+</body>
+</html>

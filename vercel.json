@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/weekly", "destination": "https://aman-weekly.surge.sh/" },
-    { "source": "/weekly/:path*", "destination": "https://aman-weekly.surge.sh/:path*" },
+    { "source": "/weekly", "destination": "/weekly/index.html" },
+    { "source": "/weekly/jev", "destination": "/weekly/jev/index.html" },
     { "source": "/", "destination": "/index.html" }
   ]
 }

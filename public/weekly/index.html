@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Aman's personal weekly synthesis of the articles and posts worth carrying forward."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <script>
+      (() => {
+        if (/^\/weekly(?:\/|$)/.test(location.pathname)) {
+          const base = document.createElement("base");
+          base.href = "/weekly/";
+          document.head.append(base);
+        }
+        let saved;
+        try { saved = localStorage.getItem("aman-weekly-theme"); } catch {}
+        document.documentElement.dataset.theme = saved === "light" || saved === "dark"
+          ? saved : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      })();
+    </script>
+    <title>Aman's Weekly</title>
+    <link rel="icon" href="favicon.svg?v=20261028-dark" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=20261028-dark" />
+  </head>
+  <body>
+    <a class="skip-link" href="#issue">Skip to this week's issue</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Aman's Weekly home">
+        Aman’s Weekly
+      </a>
+      <div class="header-actions">
+      <button class="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false">Dark mode</button>
+      <details class="deepdive">
+        <summary>Deepdive</summary>
+        <nav aria-label="Jev deepdive">
+          <a href="jev/reading-list.html">Jev reading list</a>
+          <a href="jev/">Jev atlas</a>
+        </nav>
+      </details>
+      </div>
+    </header>
+
+    <nav class="week-nav" aria-label="Weekly issues">
+      <div class="week-tabs" id="week-tabs" role="tablist" aria-label="Week starting Sunday"></div>
+    </nav>
+
+    <main id="issue" tabindex="-1">
+      <div id="issue-panel" role="tabpanel"></div>
+    </main>
+
+    <footer class="site-footer">
+      <a href="#" id="back-to-top">Back to top</a>
+    </footer>
+
+    <script src="content.js?v=20261028-dark"></script>
+    <script src="script.js?v=20261028-dark"></script>
+  </body>
+</html>

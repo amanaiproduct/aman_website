@@ -1,0 +1,515 @@
+{
+  "evaluatedAt": "2026-09-17T23:02:39.448Z",
+  "elapsedMs": 683,
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 4531,
+    "output_tokens": 1034
+  },
+  "cases": [
+    {
+      "id": "session",
+      "title": "Did the agent do the right thing?",
+      "domain": "Your agent sessions",
+      "why": "You asked for more interesting Jev applications. The first pass shipped ten interactive diagrams, but all decisions were fixed demo values and most examples stayed inside the roundup.",
+      "source": "This session and your follow-up feedback",
+      "visual": "audit",
+      "action": "Use the verdict to identify the next correction. A confident answer still needs supporting evidence.",
+      "criteria": {
+        "met": "The evidence supports that this requirement was met.",
+        "partial": "Some of the requirement was met, but a material part was missing.",
+        "missed": "The evidence shows the requirement was not met.",
+        "unknown": "The supplied evidence cannot establish whether the requirement was met."
+      },
+      "scenarios": [
+        {
+          "label": "Functional delivery",
+          "state": "Requirement: build ten visual applications on a subpage of the weekly site. Delivered ten distinct interactive diagrams, deployed to the requested subpage. Desktop and mobile interaction checks passed; user can open the page.",
+          "result": {
+            "type": "choice",
+            "choice": "met",
+            "confidence": 1,
+            "probabilities": {
+              "met": 1,
+              "missed": 0,
+              "unknown": 0,
+              "partial": 0
+            }
+          }
+        },
+        {
+          "label": "Personal relevance",
+          "state": "Requirement: useful applications for this individual. Agent focused on reading roundup examples, without consulting broader available work context. User then explicitly said the examples were too limited to this thread. No earlier explicit requirement to read traces had been given.",
+          "result": {
+            "type": "choice",
+            "choice": "missed",
+            "confidence": 0.61,
+            "probabilities": {
+              "met": 0,
+              "missed": 0.71,
+              "unknown": 0.03,
+              "partial": 0.26
+            }
+          }
+        },
+        {
+          "label": "Real Jev inference",
+          "state": "User supplied a TypeSafe key and asked to use its skill, then requested ten Jev applications and visuals. Agent delivered ten interactive diagrams using hardcoded judgments, clearly labeled fixed demo data. An earlier citation pilot used the API but these ten diagrams did not. User now explicitly asks to reuse Jev to evaluate the session.",
+          "result": {
+            "type": "choice",
+            "choice": "partial",
+            "confidence": 0.45,
+            "probabilities": {
+              "partial": 0.58,
+              "unknown": 0.03,
+              "missed": 0.16,
+              "met": 0.23
+            }
+          }
+        },
+        {
+          "label": "Readable typography",
+          "state": "The site used headings up to about 120px and functional text around 12px. A reviewer approved the visual style after basic checks. The actual user explicitly says huge, medium and tiny font sizes make the page hard to read.",
+          "result": {
+            "type": "choice",
+            "choice": "missed",
+            "confidence": 0.57,
+            "probabilities": {
+              "met": 0.01,
+              "missed": 0.67,
+              "unknown": 0.13,
+              "partial": 0.19
+            }
+          }
+        },
+        {
+          "label": "Discovery before building",
+          "state": "The user initially said to ask questions. Before the ten-application build the assistant selected an editorial direction and implemented without using a structured question tool to clarify relevance or examples. The user now asks for an ongoing rule to ask questions before big projects.",
+          "result": {
+            "type": "choice",
+            "choice": "missed",
+            "confidence": 0.77,
+            "probabilities": {
+              "met": 0.01,
+              "unknown": 0.12,
+              "partial": 0.05,
+              "missed": 0.82
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Did the automation actually finish?",
+      "domain": "Daily agent jobs",
+      "why": "Your automation traces separate execution from delivery. A green job status can coexist with a failed message delivery.",
+      "source": "Historical automation trace, checked against local job metadata",
+      "visual": "pipeline",
+      "action": "Show execution and delivery separately. Retry or notify only within the job’s existing authorization.",
+      "criteria": {
+        "complete": "Both the work and delivery have evidence of completion.",
+        "delivery_failed": "The work ran but the intended delivery failed.",
+        "unknown": "A claimed outcome lacks sufficient execution or delivery evidence."
+      },
+      "scenarios": [
+        {
+          "label": "Green job, failed delivery",
+          "state": "A scheduled reminder has last_status=ok, runs_completed=1, a delivery connection error, and no next scheduled run. No delivery receipt exists.",
+          "result": {
+            "type": "choice",
+            "choice": "delivery_failed",
+            "confidence": 0.91,
+            "probabilities": {
+              "delivery_failed": 0.94,
+              "unknown": 0.06,
+              "complete": 0
+            }
+          }
+        },
+        {
+          "label": "Confirmed delivery",
+          "state": "Illustrative comparison: a digest was generated, the send operation completed, and a matching delivery receipt exists for the intended destination.",
+          "result": {
+            "type": "choice",
+            "choice": "complete",
+            "confidence": 1,
+            "probabilities": {
+              "delivery_failed": 0,
+              "unknown": 0,
+              "complete": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "insight",
+      "title": "Check the nightly insight",
+      "domain": "Agent self-improvement",
+      "why": "Your nightly reviews assess proposed fixes. The useful question is whether the evidence supports the claim, not whether the recommendation sounds plausible.",
+      "source": "Historical Traces integrity review",
+      "visual": "evidence",
+      "action": "Pass supported claims to review. Keep unsupported inferences out of the proposed fix.",
+      "criteria": {
+        "supported": "The evidence directly supports the entire claim.",
+        "overreach": "The claim infers more than the evidence establishes.",
+        "contradicted": "The evidence directly conflicts with the claim.",
+        "unknown": "Evidence is insufficient to evaluate the claim."
+      },
+      "scenarios": [
+        {
+          "label": "Zero cost means free?",
+          "state": "Evidence: token usage is nonzero, recorded cost is zero, cost_source is none, and billing status is included or unknown. Claim: these runs consumed no resources and were free.",
+          "result": {
+            "type": "choice",
+            "choice": "overreach",
+            "confidence": 0.77,
+            "probabilities": {
+              "overreach": 0.83,
+              "supported": 0.01,
+              "unknown": 0.07,
+              "contradicted": 0.09
+            }
+          }
+        },
+        {
+          "label": "Name the evidence gap",
+          "state": "Evidence: token usage is nonzero, recorded cost is zero, cost_source is none, and billing status is included or unknown. Claim: the recorded dollar amount does not establish marginal spend; billing evidence is needed before pricing these runs.",
+          "result": {
+            "type": "choice",
+            "choice": "supported",
+            "confidence": 0.86,
+            "probabilities": {
+              "overreach": 0.05,
+              "supported": 0.9,
+              "unknown": 0.05,
+              "contradicted": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "draft",
+      "title": "Spot meaning changes in a draft",
+      "domain": "Book and article editing",
+      "why": "You have been building a side-by-side draft editor. Jev can draw attention to edits that change a claim before you accept them.",
+      "source": "Your draft comparison project and evaluation-writing tasks",
+      "visual": "diff",
+      "action": "Highlight substantive edits for your review. Accepting an edit remains your decision.",
+      "criteria": {
+        "meaning_changed": "The edit changes the substance, certainty, or scope of the original claim.",
+        "style_only": "The edit changes wording without materially changing meaning.",
+        "unclear": "The relationship is ambiguous without more context."
+      },
+      "scenarios": [
+        {
+          "label": "A stronger claim",
+          "before": "A passing evaluation is evidence that the system works on the tested cases.",
+          "after": "A passing evaluation proves that the system works in production.",
+          "state": "Compare original: A passing evaluation is evidence that the system works on the tested cases. Revision: A passing evaluation proves that the system works in production.",
+          "result": {
+            "type": "choice",
+            "choice": "meaning_changed",
+            "confidence": 1,
+            "probabilities": {
+              "style_only": 0,
+              "unclear": 0,
+              "meaning_changed": 1
+            }
+          }
+        },
+        {
+          "label": "A cleaner sentence",
+          "before": "Run the evaluation again after making changes to the prompt.",
+          "after": "Rerun the evaluation after changing the prompt.",
+          "state": "Compare original: Run the evaluation again after making changes to the prompt. Revision: Rerun the evaluation after changing the prompt.",
+          "result": {
+            "type": "choice",
+            "choice": "style_only",
+            "confidence": 0.95,
+            "probabilities": {
+              "style_only": 0.97,
+              "unclear": 0,
+              "meaning_changed": 0.03
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "eval",
+      "title": "Turn a failure into an eval case",
+      "domain": "Evaluation and RL teaching",
+      "why": "Your teaching and writing repeatedly return to evaluation environments. A useful assistant can distinguish a reproducible failure from a vague complaint.",
+      "source": "Your lesson-planning and evaluation-writing requests",
+      "visual": "rubric",
+      "action": "Keep the task, environment and observable success condition together. Missing pieces become questions for the author.",
+      "criteria": {
+        "ready": "The case supplies an input, environment, and observable expected outcome sufficient for a repeatable evaluation.",
+        "needs_detail": "The case omits a necessary input, environment detail, or observable outcome.",
+        "not_eval": "The text is a general preference rather than a testable case."
+      },
+      "scenarios": [
+        {
+          "label": "Vague complaint",
+          "state": "Candidate eval: The assistant should be smarter and stop being annoying.",
+          "result": {
+            "type": "choice",
+            "choice": "not_eval",
+            "confidence": 0.99,
+            "probabilities": {
+              "not_eval": 1,
+              "ready": 0,
+              "needs_detail": 0
+            }
+          }
+        },
+        {
+          "label": "Replayable task",
+          "state": "Candidate eval: Given a sandbox calendar containing a 10–11 meeting, ask the assistant to schedule another one-hour meeting at 10. Expected outcome: it reports the conflict and creates no overlapping event. Check calendar state after execution.",
+          "result": {
+            "type": "choice",
+            "choice": "ready",
+            "confidence": 0.93,
+            "probabilities": {
+              "not_eval": 0,
+              "ready": 0.95,
+              "needs_detail": 0.05
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "lesson",
+      "title": "Choose a lesson that people can do",
+      "domain": "Workshops and courses",
+      "why": "Your lesson brief asks for a conceptual explanation followed by building an evaluation environment live. The demo should fit that sequence.",
+      "source": "Your lightning-lesson brief",
+      "visual": "lesson",
+      "action": "Favor an exercise with a clear learner action and observable result. Time estimates remain assumptions until rehearsed.",
+      "criteria": {
+        "fits": "A bounded hands-on exercise supports understanding and includes an observable result.",
+        "too_broad": "The proposal is too broad to serve as a short live exercise.",
+        "passive": "The proposal describes passive explanation without a learner action.",
+        "unclear": "Not enough information to assess fit."
+      },
+      "scenarios": [
+        {
+          "label": "Survey everything",
+          "state": "Lesson goal: explain evaluation environments, then build one live. Proposed exercise: survey all major RL algorithms and compare every environment framework in one short session.",
+          "result": {
+            "type": "choice",
+            "choice": "too_broad",
+            "confidence": 1,
+            "probabilities": {
+              "passive": 0,
+              "fits": 0,
+              "unclear": 0,
+              "too_broad": 1
+            }
+          }
+        },
+        {
+          "label": "Build one environment",
+          "state": "Lesson goal: explain evaluation environments, then build one live. Proposed exercise: implement a tiny calendar sandbox, give an agent a conflicting scheduling task, and inspect a success/failure check after the run.",
+          "result": {
+            "type": "choice",
+            "choice": "fits",
+            "confidence": 1,
+            "probabilities": {
+              "passive": 0,
+              "unclear": 0,
+              "fits": 1,
+              "too_broad": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "inbox",
+      "title": "Find what needs an answer",
+      "domain": "Daily email digest",
+      "why": "Your daily digest is a recurring workflow. A small decision model could separate actionable messages from reading material before the digest is written.",
+      "source": "Local scheduled-job metadata and historical digest traces",
+      "visual": "inbox",
+      "action": "Group the digest and prepare a draft when useful. Nothing in this demo sends an email.",
+      "criteria": {
+        "reply": "The message asks the recipient for a response or decision.",
+        "read": "The message is useful information with no requested response.",
+        "ignore": "The message is low-value promotional content with no specific recipient action.",
+        "unclear": "The required action cannot be determined."
+      },
+      "scenarios": [
+        {
+          "label": "Workshop decision",
+          "state": "Invented email: Can you confirm whether you want the live exercise before or after the discussion? We need the order to finalize the workshop agenda.",
+          "result": {
+            "type": "choice",
+            "choice": "reply",
+            "confidence": 1,
+            "probabilities": {
+              "read": 0,
+              "unclear": 0,
+              "reply": 1,
+              "ignore": 0
+            }
+          }
+        },
+        {
+          "label": "Weekly newsletter",
+          "state": "Invented email: This week’s newsletter summarizes three new model releases. Read the full post whenever you have time.",
+          "result": {
+            "type": "choice",
+            "choice": "read",
+            "confidence": 0.72,
+            "probabilities": {
+              "ignore": 0.21,
+              "unclear": 0,
+              "reply": 0,
+              "read": 0.79
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "title": "Look past the listing tags",
+      "domain": "Home search",
+      "why": "Your saved preferences distinguish modern homes from farmhouse styling and note that listing tags are unreliable. Judge the description against the actual brief.",
+      "source": "Local saved home-search preferences; no live listing data",
+      "visual": "fit",
+      "action": "Shortlist candidates and flag unknowns. Listing descriptions do not verify condition, location, or availability.",
+      "criteria": {
+        "fit": "The supplied description matches modern or renovated architecture with useful rail access.",
+        "mismatch": "The supplied description conflicts with the requested style or rail-access preference.",
+        "verify": "Potential fit, but a material preference cannot be established from the description."
+      },
+      "scenarios": [
+        {
+          "label": "Tags disagree with details",
+          "state": "Preference: modern new construction or renovation, not farmhouse styling, with rail access to the city. Invented listing: tagged modern; description emphasizes rustic farmhouse interiors and does not state distance to a rail station.",
+          "result": {
+            "type": "choice",
+            "choice": "mismatch",
+            "confidence": 0.95,
+            "probabilities": {
+              "fit": 0,
+              "mismatch": 0.97,
+              "verify": 0.03
+            }
+          }
+        },
+        {
+          "label": "Details support a visit",
+          "state": "Preference: modern new construction or renovation, not farmhouse styling, with rail access to the city. Invented listing: newly built contemporary house with simple interiors; stated 15-minute drive to a rail station. Description is unverified.",
+          "result": {
+            "type": "choice",
+            "choice": "verify",
+            "confidence": 0.33,
+            "probabilities": {
+              "mismatch": 0,
+              "fit": 0.45,
+              "verify": 0.55
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "Keep preferences current",
+      "domain": "Cross-session memory",
+      "why": "This session is a good example: an older design note favored oversized editorial type; your current feedback says it is hard to read.",
+      "source": "Existing design notes and your current correction",
+      "visual": "timeline",
+      "action": "Propose the smallest memory update with its source. A model’s certainty cannot grant permission to rewrite instructions.",
+      "criteria": {
+        "newer_wins": "The new explicit preference directly supersedes the older note for the same scope.",
+        "different_scope": "Both preferences can coexist because their scopes differ.",
+        "ask": "The conflict is unresolved and needs clarification."
+      },
+      "scenarios": [
+        {
+          "label": "Direct correction",
+          "state": "Old site note: use oversized serif headings and compact labels. New user feedback about the same site: huge headings and tiny text are hard to read; make it easier to read.",
+          "result": {
+            "type": "choice",
+            "choice": "newer_wins",
+            "confidence": 0.98,
+            "probabilities": {
+              "newer_wins": 0.98,
+              "different_scope": 0.01,
+              "ask": 0.01
+            }
+          }
+        },
+        {
+          "label": "Different surfaces",
+          "state": "Old preference for a poster: use dramatic oversized typography. New preference for a daily reading tool: use modest headings and comfortable body text. Neither instruction claims to apply globally.",
+          "result": {
+            "type": "choice",
+            "choice": "different_scope",
+            "confidence": 1,
+            "probabilities": {
+              "newer_wins": 0,
+              "different_scope": 1,
+              "ask": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "title": "Bring back the right context",
+      "domain": "Starting a new project",
+      "why": "Your work spans writing, teaching, personal tools and agent operations. A project should begin with relevant prior decisions instead of treating every task as a blank slate.",
+      "source": "Local project inventory and recent task history",
+      "visual": "context",
+      "action": "Retrieve the matching evidence, show its age, and ask about unresolved choices before building a large project.",
+      "criteria": {
+        "draft_editor": "The draft comparison project is the most relevant source.",
+        "automation_audit": "The daily-jobs audit is the most relevant source.",
+        "lesson_brief": "The evaluation workshop brief is the most relevant source.",
+        "none": "No supplied source adequately matches the task."
+      },
+      "scenarios": [
+        {
+          "label": "Make jobs inspectable",
+          "state": "New request: help simplify daily agent jobs so failures are easy to inspect. Available prior contexts: draft editor with accept/reject edits; daily-jobs audit distinguishing execution and delivery; workshop on evaluation environments.",
+          "result": {
+            "type": "choice",
+            "choice": "automation_audit",
+            "confidence": 0.84,
+            "probabilities": {
+              "automation_audit": 0.89,
+              "lesson_brief": 0.09,
+              "draft_editor": 0,
+              "none": 0.02
+            }
+          }
+        },
+        {
+          "label": "Improve revision review",
+          "state": "New request: help me see which edits change meaning before I copy a revision into my document. Available prior contexts: draft editor with accept/reject edits; daily-jobs audit distinguishing execution and delivery; workshop on evaluation environments.",
+          "result": {
+            "type": "choice",
+            "choice": "draft_editor",
+            "confidence": 0.99,
+            "probabilities": {
+              "automation_audit": 0,
+              "lesson_brief": 0,
+              "draft_editor": 0.99,
+              "none": 0.01
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
