@@ -5,8 +5,27 @@ const weeklyIssues = [
     "id": "2026-10-25",
     "shortLabel": "Oct 25–31",
     "dateRange": "October 25–31, 2026",
-    "updated": "Updated October 28",
+    "updated": "Updated October 31",
     "entries": [
+      {
+        "title": "Ask about your screen without copy-pasting",
+        "themes": ["agents","context"],
+        "summary": "A free third-party bot template pairs an iPhone Shortcut with the Action Button. The demo shows spoken questions answered by notification using a screenshot, page context, and web search. Setup requires Grok Bot; the workflow has not been independently tested here.",
+        "application": "Test this on one public article: ask for three takeaways and one experiment. Verify the answer against the source before using it for teaching materials, and avoid capturing sensitive screens.",
+        "url": "https://x.com/everestchris6/status/2116183923747422477",
+        "handle": "@everestchris6",
+        "published": "October 30, 2026",
+        "related": [
+          {
+            "label": "Action Button Bot by Everest — setup template",
+            "url": "https://x.ai/bot/yc8yWwlDJLRwr0JuyHRhA"
+          },
+          {
+            "label": "Author’s setup-link reply",
+            "url": "https://x.com/everestchris6/status/2116184125640261875"
+          }
+        ]
+      },
       {
         "title": "Readable traces do not guarantee safety",
         "themes": ["security","evals"],
