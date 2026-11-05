@@ -2,6 +2,33 @@ const readingThemes = Object.freeze(["agents","evals","security","research","pro
 
 const weeklyIssues = [
   {
+    "id": "2026-11-01",
+    "shortLabel": "Nov 1–7",
+    "dateRange": "November 1–7, 2026",
+    "updated": "Updated November 5",
+    "entries": [
+      {
+        "title": "Use eval labels to search agent traces",
+        "themes": ["evals","context"],
+        "summary": "Eval results can become reusable search indexes, not just dashboard scores. Store action, outcome, and recovery labels alongside trace and span IDs, then query those labels before inspecting raw evidence. Unreliable labels can mislead retrieval; reported search savings exclude upfront indexing costs.",
+        "application": "Take 20 existing traces and label requested action, outcome, and recovery alongside span IDs. Query that small index for unresolved work, then manually inspect hits and misses against raw traces before automating.",
+        "url": "https://x.com/JoshARosen/status/2118338245989662838",
+        "handle": "@JoshARosen",
+        "published": "November 5, 2026",
+        "related": [
+          {
+            "label": "Searching a billion tokens of agent data — article and benchmark",
+            "url": "https://www.judgmentlabs.ai/blogs/evals-as-indexes"
+          },
+          {
+            "label": "Judgment Labs — original X article",
+            "url": "https://x.com/i/article/2117684313152221185"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "2026-10-25",
     "shortLabel": "Oct 25–31",
     "dateRange": "October 25–31, 2026",
