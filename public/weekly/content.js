@@ -8,6 +8,22 @@ const weeklyIssues = [
     "updated": "Updated November 5",
     "entries": [
       {
+        "title": "Test your agent on real work",
+        "themes": ["evals","agents"],
+        "summary": "A leaderboard can help you shortlist models, but it can't tell you whether your agent gets your customers' work done. Replay real requests with the production model, tools, and permissions in an isolated environment. Grade the final state and test whether the grader itself can be fooled.",
+        "application": "Turn one recent agent failure into a regression test. Run it in a sandbox and check the actual outcome. Before using it to gate a release, confirm that a known-good solution passes and doing nothing fails.",
+        "url": "https://x.com/punit_arani/status/2118539893815308737",
+        "handle": "@punit_arani",
+        "published": "November 5, 2026",
+        "related": [
+          {"label": "Enterprise Evals 101 — full article", "url": "https://x.com/i/article/2118060510398820352"},
+          {"label": "Harbor — core concepts", "url": "https://www.harborframework.com/docs/core-concepts"},
+          {"label": "Anthropic — Demystifying evals for AI agents", "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents"},
+          {"label": "Hardening Agent Benchmarks with Adversarial Hacker-Fixer Loops", "url": "https://arxiv.org/abs/2606.08960"},
+          {"label": "Prime Intellect — Verifiers", "url": "https://www.primeintellect.ai/blog/verifiers-v1"}
+        ]
+      },
+      {
         "title": "Use eval labels to search agent traces",
         "themes": ["evals","context"],
         "summary": "Eval results can become reusable search indexes, not just dashboard scores. Store action, outcome, and recovery labels alongside trace and span IDs, then query those labels before inspecting raw evidence. Unreliable labels can mislead retrieval; reported search savings exclude upfront indexing costs.",
