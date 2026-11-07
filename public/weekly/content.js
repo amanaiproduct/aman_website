@@ -5,8 +5,22 @@ const weeklyIssues = [
     "id": "2026-11-01",
     "shortLabel": "Nov 1–7",
     "dateRange": "November 1–7, 2026",
-    "updated": "Updated November 5",
+    "updated": "Updated November 6",
     "entries": [
+      {
+        "title": "Run Switch game code on Apple silicon",
+        "themes": ["infrastructure"],
+        "summary": "NxNative runs Switch game code directly on Apple silicon while replacing the console services it expects and translating graphics to Metal. You supply your own game dump and keys. Compatibility is title-specific, and the README reports Switch 2 support on Mac only.",
+        "application": "Read one game’s compatibility notes before trying a build. Look for what still breaks even when the CPU can run the code directly: graphics, system services, or packaging.",
+        "url": "https://github.com/seedds/nxnative",
+        "source": "GitHub · seedds/nxnative",
+        "published": "October 2026",
+        "related": [
+          {"label": "NxNative — game compatibility notes", "url": "https://github.com/seedds/nxnative#games"},
+          {"label": "NxNative — development and packaging guide", "url": "https://github.com/seedds/nxnative/blob/main/docs/development.md"},
+          {"label": "d2r-mobile — project NxNative builds on", "url": "https://github.com/jhaizhou-ops/d2r-mobile"}
+        ]
+      },
       {
         "title": "Test your agent on real work",
         "themes": ["evals","agents"],
