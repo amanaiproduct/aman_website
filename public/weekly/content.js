@@ -2,6 +2,29 @@ const readingThemes = Object.freeze(["agents","evals","security","research","pro
 
 const weeklyIssues = [
   {
+    "id": "2026-11-22",
+    "shortLabel": "Nov 22–28",
+    "dateRange": "November 22–28, 2026",
+    "updated": "Updated November 22",
+    "entries": [
+      {
+        "title": "Better prediction is not a safety test",
+        "themes": ["models","evals"],
+        "summary": "OpenAI proposes shared development limits informed by perplexity: how well a model predicts the next piece of text. Its internal results suggest prediction gains can precede unexpected abilities. But scores depend on the test data, miss gains from later training, and do not establish safe behavior.",
+        "application": "For your next model upgrade, rerun the same saved tasks and failure checks before switching. Treat a better model score as a reason to test again, not proof your existing safeguards still work.",
+        "url": "https://x.com/merettm/status/2124549218995949967",
+        "handle": "@merettm",
+        "published": "November 22, 2026",
+        "related": [
+          {
+            "label": "Perplexity and Intelligence — full OpenAI essay",
+            "url": "https://openai.com/index/perplexity-and-intelligence/"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "2026-11-01",
     "shortLabel": "Nov 1–7",
     "dateRange": "November 1–7, 2026",
