@@ -72,6 +72,8 @@ a{color:inherit;text-decoration:none}
 .announce .container{display:flex;justify-content:center;gap:10px;padding:9px var(--gutter);
   font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-3);flex-wrap:wrap}
 .announce a{color:var(--fg-2)} .announce a:hover{color:var(--fg)}
+.announce .reads-link{white-space:nowrap;text-decoration:underline;text-underline-offset:.2em}
+@media(min-width:621px){.announce .container{padding-right:calc(var(--gutter) + 80px)}}
 
 /* nav */
 .nav{position:fixed;top:0;left:0;right:0;z-index:60;background:color-mix(in srgb,var(--bg) 90%,transparent);
@@ -83,6 +85,7 @@ a{color:inherit;text-decoration:none}
 .nav-items a{background:var(--bg);padding:7px 13px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--fg-2);transition:background .2s,color .2s}
 .nav-items a:hover{background:var(--s3);color:var(--fg)}
+@media(min-width:761px) and (max-width:1000px){.nav .container{gap:10px}.nav-items a{padding-inline:7px;font-size:11px;letter-spacing:.06em}}
 @media(max-width:760px){.nav-items{display:none}}
 
 /* hero */
@@ -216,6 +219,7 @@ footer{padding:44px 0 60px}
 
 <div class="announce">
   <div class="container"><a href="https://maven.com/aman-khan/claude-code-for-product-managers">Check out my course &mdash; Claude Code for PMs &rarr;</a>
+    <a class="reads-link" href="/weekly">Aman’s reads</a>
     <button class="theme-btn" aria-label="Toggle light and dark mode">Light</button></div>
 </div>
 
@@ -228,6 +232,7 @@ footer{padding:44px 0 60px}
       <a href="#courses">Courses</a>
       <a href="#talks">Talks</a>
       <a href="#writing">Writing</a>
+      <a href="/weekly">Aman’s reads</a>
     </div>
     <button class="theme-btn" aria-label="Toggle light and dark mode">Light</button>
   </div>

@@ -37,10 +37,12 @@ a:hover { text-decoration-thickness: 2px; }
 button, summary, a { -webkit-tap-highlight-color: var(--selection); }
 summary { cursor: pointer; }
 summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
-.site-header, .week-nav, #issue, .site-footer {
+.site-home, .site-header, .week-nav, #issue, .site-footer {
   width: min(calc(100% - 2.5rem), var(--frame));
   margin-inline: auto;
 }
+.site-home { padding-top: 0.5rem; }
+.site-home a { display: flex; align-items: center; width: fit-content; min-height: 2.75rem; color: var(--muted); font-size: var(--small); }
 .skip-link {
   position: fixed;
   z-index: 2;
@@ -56,7 +58,7 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  padding-block: 1rem 0.5rem;
+  padding-block: 0 0.5rem;
 }
 .wordmark {
   display: flex;
@@ -158,12 +160,12 @@ summary:hover { text-decoration: underline; text-underline-offset: 0.2em; }
 .site-footer { border-top: 1px solid var(--line); padding-block: 0.75rem 2rem; font-size: var(--small); color: var(--muted); }
 .site-footer a { display: flex; width: fit-content; align-items: center; min-height: 2.75rem; }
 @media (min-width: 760px) {
-  .site-header { padding-top: 2rem; }
+  .site-home { padding-top: 1rem; }
   .issue-intro { padding-block: 2rem; }
   .entry { padding-block: 2rem 2.25rem; }
 }
 @media (max-width: 350px) {
-  .site-header, .week-nav, #issue, .site-footer { width: calc(100% - 2rem); }
+  .site-home, .site-header, .week-nav, #issue, .site-footer { width: calc(100% - 2rem); }
   .site-header { gap: 0.5rem; }
   .wordmark { font-size: 1.125rem; }
 }
