@@ -16,7 +16,7 @@
           document.head.append(base);
         }
         let saved;
-        try { saved = localStorage.getItem("aman-weekly-theme"); } catch {}
+        try { saved = localStorage.getItem("theme") || localStorage.getItem("aman-weekly-theme"); } catch {}
         document.documentElement.dataset.theme = saved === "light" || saved === "dark"
           ? saved : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       })();
@@ -67,6 +67,6 @@
     </footer>
 
     <script src="content.js?v=20261028-menu"></script>
-    <script src="script.js?v=20261028-menu"></script>
+    <script src="script.js?v=20261122-theme"></script>
   </body>
 </html>

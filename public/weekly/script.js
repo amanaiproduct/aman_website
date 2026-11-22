@@ -23,10 +23,10 @@ applyTheme(document.documentElement.dataset.theme);
 themeToggle.addEventListener("click", () => {
   const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
   applyTheme(next);
-  try { localStorage.setItem("aman-weekly-theme", next); } catch {}
+  try { localStorage.setItem("theme", next); localStorage.setItem("aman-weekly-theme", next); } catch {}
 });
 deviceTheme.addEventListener("change", event => {
-  try { if (localStorage.getItem("aman-weekly-theme")) return; } catch {}
+  try { if (localStorage.getItem("theme") || localStorage.getItem("aman-weekly-theme")) return; } catch {}
   applyTheme(event.matches ? "dark" : "light");
 });
 
